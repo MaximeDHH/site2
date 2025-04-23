@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
- <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
- <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" %>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
+    <!-- Font Awesome -->
+    <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" %>
+
+    <!-- Title and Meta Tags -->
     <title>ManucureVitrine</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <!-- Leaflet CSS -->
     <%= stylesheet_link_tag 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', media: 'all' %>
+
+    <!-- Application CSS (make sure it's after external links) -->
+    <%= stylesheet_link_tag "application" %>
+
+    <!-- Leaflet JS (Make sure it's placed after CSS) -->
     <%= javascript_importmap_tags 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js' %>
 
   </head>
 
   <body>
-  <%= render 'shared/header' %>
+    <%= render 'shared/header' %>
     <%= yield %>
-     <%= render 'shared/footer' %>
+    <%= render 'shared/footer' %>
   </body>
 </html>

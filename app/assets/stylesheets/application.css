@@ -13,3 +13,285 @@
  *= require_tree .
  *= require_self
  */
+
+ /* Reset minimal */
+/* Reset minimal */
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  color: black;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 40px;
+  z-index: 1000;
+  display: flex;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  backdrop-filter: blur(8px); /* Ajoute un léger flou d'arrière-plan */
+  -webkit-backdrop-filter: blur(8px); /* Compatibilité pour Safari */
+}
+
+header.transparent {
+  background-color: transparent;
+}
+
+header.scrolled {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Optionnel pour ajouter un peu de profondeur */
+}
+
+header .logo {
+  height: 50px;   /* Ajuste la taille du logo */
+  width: 50px;    /* Doit être égale à la hauteur pour une forme circulaire */
+  border-radius: 50%; /* Forme circulaire */
+}
+
+
+header.scrolled h1 {
+  color: black;
+}
+
+/* NAVIGATION */
+header nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header nav a {
+  text-decoration: none;
+  color: black;
+  font-size: 1em;
+  margin: 0 1.5em;
+  transition: color 0.3s ease;
+}
+
+header.scrolled nav a {
+  color: black;
+}
+
+/* HERO SECTION */
+.hero {
+  height: 100vh; /* Full screen */
+  background: url('/assets/naisl-salon.jpg') center bottom / cover no-repeat;
+  filter: brightness(0.9); /* Applique un filtre de luminosité pour assombrir légèrement l'image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  position: relative;
+
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.1); /* Un léger fondu pour améliorer la lisibilité */
+  z-index: 1;
+  padding-left: 50w;
+}
+
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+    max-width: 600px;
+    transform: translateX(-40%); /* Reviens légèrement à gauche, mais pas trop */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+
+
+  text-align: left;
+
+}
+
+.hero-content h2 {
+  font-size: 2.5em;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.hero-content p {
+  font-size: 1.2em;
+  color: white;
+}
+
+.hero.home-hero {
+  background-image: url('/assets/naisl-salon.jpg');
+}
+
+.hero.contact-hero {
+  background-image: url('/assets/salon.jpg'); /* Change le chemin selon ton image */
+  height: calc(100vh - 8rem); /* légèrement moins haut pour laisser entrevoir la carte */
+}
+/* BIO SECTION */
+.bio {
+  padding: 100px 40px;
+  background-color: white;
+  color: black;
+}
+
+.bio h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.bio p {
+  font-size: 1.4rem;
+}
+
+.about {
+  background-color: #fdfcfc; /* Fond clair doux qui contraste bien avec le hero */
+  padding: 80px 40px;        /* Espacement autour du bloc */
+
+}
+
+.about-container {
+  display: flex;             /* Alignement horizontal image + texte */
+  align-items: center;       /* Aligne les éléments verticalement au centre */
+  max-width: 1100px;         /* Largeur max du bloc */
+  gap: 40px;                 /* Espace entre image et texte */
+  flex-wrap: wrap;           /* Passe en colonne sur les petits écrans (responsive) */
+}
+
+.about-image {
+  flex: 1;                   /* L'image prend 1 part de l’espace disponible */
+  display: flex;
+  justify-content: center;   /* Centre l’image horizontalement dans son bloc */
+}
+
+.about-pic {
+  width: 100%;               /* Prend toute la largeur disponible dans son conteneur */
+  max-width: 400px;          /* Ne dépasse pas 400px */
+  border-radius: 12px;       /* Coins arrondis pour adoucir l’image */
+  object-fit: cover;         /* L’image garde ses proportions et remplit bien le bloc */
+}
+
+.about-text {
+  flex: 1;                   /* Le texte prend également 1 part de l’espace */
+}
+
+
+.about-text p {
+  font-size: 1.2em;          /* Taille du texte lisible */
+  line-height: 1.6;          /* Hauteur de ligne agréable pour la lecture */
+  color: #333;               /* Gris foncé : plus doux que noir pur */
+}
+
+.about-section {
+  padding: 100px 60px;
+  background-color: #f8f8f8;
+}
+
+/* Conteneur du titre : centré globalement, mais décalé vers la gauche */
+.section-title {
+  width: fit-content;
+  margin-left: 50%;
+  transform: translateX(-50%); /* centre par rapport à la section */
+  text-align: left; /* alignement du texte à gauche */
+  margin-bottom: 40px;
+}
+
+.section-title h2 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #000;
+  margin: 0;
+}
+
+.section-title .underline {
+  width: 60px;
+  height: 3px;
+  background-color: #c4a07a; /* doré/rosé comme dans l'image */
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+
+
+/* Contenu image + texte */
+.about-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+
+}
+
+.about-content img {
+  width: 400px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.about-content .text {
+  max-width: 600px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+
+}
+
+.about-text p {
+  text-align: justify;
+}
+
+.site-footer {
+  background-color: white;
+  color: #222;
+  padding: 40px 20px 30px;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  font-size: 0.95rem;
+  border-top: 1px solid #eee;
+}
+
+.footer-info {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 60px;
+  margin-bottom: 20px;
+}
+
+.footer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-weight: 200;
+}
+
+.footer-item i {
+  font-size: 1.5rem;
+  color: #222;
+}
+
+.footer-bottom p {
+  margin: 5px 0;
+  color: #555;
+  font-size: small;
+}
+
+.footer-bottom a {
+  color: #555;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-bottom a:hover {
+  color: #000;
+}

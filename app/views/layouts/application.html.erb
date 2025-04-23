@@ -18,7 +18,8 @@
     <%= stylesheet_link_tag 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', media: 'all' %>
 
     <!-- Application CSS (make sure it's after external links) -->
-    <%= stylesheet_link_tag "application" %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
 
     <!-- Leaflet JS (Make sure it's placed after CSS) -->
     <%= javascript_importmap_tags 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js' %>
@@ -29,5 +30,16 @@
     <%= render 'shared/header' %>
     <%= yield %>
     <%= render 'shared/footer' %>
+    <script>
+  window.addEventListener('scroll', function () {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+</script>
+
   </body>
 </html>

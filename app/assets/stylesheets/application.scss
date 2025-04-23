@@ -39,8 +39,7 @@ header {
   z-index: 1000;
   display: flex;
   transition: background-color 0.4s ease, color 0.4s ease;
-  backdrop-filter: blur(8px); /* Ajoute un léger flou d'arrière-plan */
-  -webkit-backdrop-filter: blur(8px); /* Compatibilité pour Safari */
+
 }
 
 header.transparent {
@@ -49,6 +48,8 @@ header.transparent {
 
 header.scrolled {
   box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Optionnel pour ajouter un peu de profondeur */
+  backdrop-filter: blur(8px); /* Ajoute un léger flou d'arrière-plan */
+  -webkit-backdrop-filter: blur(8px); /* Compatibilité pour Safari */
 }
 
 header .logo {

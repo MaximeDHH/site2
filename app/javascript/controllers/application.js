@@ -12,6 +12,8 @@ export { application }
 const title = document.querySelector(".section-title");
 observer.observe(title);
 
+
+
 // Dans le callback du même IntersectionObserver :
 if (entry.isIntersecting) {
   section.classList.add("visible");

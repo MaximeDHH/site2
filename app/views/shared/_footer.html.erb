@@ -1,21 +1,32 @@
 <footer class="site-footer">
-  <div class="footer-info">
-    <div class="footer-item">
-      <i class="fa-solid fa-phone"></i>
-      <span><strong>06 27 35 81 88</strong></span>
-    </div>
-    <div class="footer-item">
-      <i class="fa-solid fa-map-location-dot"></i>
-      <span><strong>64 rue Brancion<br>75015 Paris</strong></span>
-    </div>
-    <div class="footer-item">
-      <i class="fa-solid fa-clock"></i>
-      <span><strong>Lun - Dim</strong><br>10:00 - 20:00</span>
-    </div>
-  </div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <%= image_tag 'nails-logo.jpg', alt: 'Royal Nail', class: 'footer-logo' %>
+        <p class="footer-tagline">L'élégance à portée de main.</p>
+      </div>
 
-  <div class="footer-bottom">
-    <p>Copyright 2025 ©MDHHDB</p>
-    <p><a href="#">Mentions légales</a> | Créé par Litoey</p>
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><%= link_to 'Accueil', root_path %></li>
+          <li><a href="#">Onglerie</a></li>
+          <li><a href="#">Massages</a></li>
+          <li><%= link_to 'Contact', contact_path %></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p><i class="fa-solid fa-phone"></i> 06 27 35 81 88</p>
+        <p><i class="fa-solid fa-location-dot"></i> 64 rue Brancion, 75015 Paris</p>
+        <p><i class="fa-solid fa-clock"></i> Lun – Dim : 10h – 20h</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Royal Nail — Tous droits réservés</p>
+      <p><a href="#">Mentions légales</a></p>
+    </div>
   </div>
 </footer>

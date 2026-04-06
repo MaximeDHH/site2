@@ -1,16 +1,65 @@
-<%= render 'shared/hero', hero_class: 'contact-hero', hero_title: 'Contactez-nous', hero_description: 'Nous sommes à votre écoute pour toute question ou réservation.' %>
-<div id="map" style="height: 250px; width: 100%; ;"></div>
+<%= render 'shared/hero',
+  hero_class: 'contact-hero',
+  hero_title: 'Prenez rendez-vous',
+  hero_description: 'Nous sommes à votre écoute pour toute question ou réservation.' %>
+
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <div class="contact-info">
+        <p class="section-eyebrow">Nous trouver</p>
+        <h2>Informations pratiques</h2>
+        <div class="gold-bar"></div>
+
+        <div class="info-list">
+          <div class="info-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <strong>Adresse</strong>
+              <span>64 rue Brancion, 75015 Paris</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <strong>Téléphone</strong>
+              <span><a href="tel:+33627358188">06 27 35 81 88</a></span>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fa-solid fa-clock"></i>
+            <div>
+              <strong>Horaires</strong>
+              <span>Lundi — Dimanche : 10h – 20h</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fa-solid fa-envelope"></i>
+            <div>
+              <strong>Email</strong>
+              <span><a href="mailto:contact@royalnail.fr">contact@royalnail.fr</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-map">
+        <div id="map"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    var map = L.map('map').setView([47.75847930119338, -3.370361642863164], 13); // Coordonnées par défaut : Paris
-
+    var map = L.map('map').setView([47.75847930119338, -3.370361642863164], 15);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
-
     L.marker([47.75847930119338, -3.370361642863164]).addTo(map)
-      .bindPopup('Notre salon de manucure à Lorient !')
+      .bindPopup('<strong>Royal Nail</strong><br>Salon de manucure à Lorient')
       .openPopup();
   });
 </script>

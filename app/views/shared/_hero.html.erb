@@ -1,7 +1,11 @@
-<!-- app/views/shared/_hero.html.erb -->
 <section class="hero <%= hero_class %>">
+  <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h2><%= hero_title %></h2>
-    <p><%= hero_description %></p>
+    <p class="hero-eyebrow">Salon d'onglerie à Lorient</p>
+    <h1><%= hero_title %></h1>
+    <p class="hero-sub"><%= hero_description %></p>
+    <% if local_assigns[:hero_cta] %>
+      <a href="<%= hero_cta_path %>" class="btn-primary"><%= hero_cta %></a>
+    <% end %>
   </div>
 </section>

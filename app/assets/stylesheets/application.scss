@@ -6,66 +6,51 @@
 /* ============================================================
    VARIABLES
    ============================================================ */
-$gold:        #c4a47c;
-$gold-light:  #e8d9c4;
-$rose:        #b5808d;
-$dark:        #1e1e1e;
-$text:        #4a4a4a;
-$text-light:  #7a7a7a;
-$bg:          #fdf9f7;
-$bg-alt:      #f5ede8;
-$white:       #ffffff;
+$coral:      #e8391d;
+$coral-dark: #c92e14;
+$yellow:     #f0c040;
+$yellow-dark:#d9ab30;
+$cream:      #faf8f4;
+$white:      #ffffff;
+$dark:       #1a1a1a;
+$text:       #3a3a3a;
+$text-light: #888888;
+$border:     #e8e0d8;
 
 /* ============================================================
    RESET & BASE
    ============================================================ */
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
   color: $text;
-  background-color: $white;
+  background: $cream;
   line-height: 1.6;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
 
 /* ============================================================
-   LAYOUT HELPERS
+   LAYOUT
    ============================================================ */
-.container {
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 0 40px;
-}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 56px; }
 
 /* ============================================================
-   TYPOGRAPHY HELPERS
+   HELPERS
    ============================================================ */
 .section-eyebrow {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: $gold;
-  margin-bottom: 0.75rem;
+  color: $coral;
+  margin-bottom: 0.6rem;
+  display: block;
 }
 
 .section-heading {
@@ -73,320 +58,407 @@ img {
   margin-bottom: 3.5rem;
 
   h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.4rem;
-    font-weight: 600;
+    font-family: 'Rufina', serif;
+    font-size: 2.6rem;
+    font-weight: 700;
     color: $dark;
-    margin-top: 0.4rem;
+    margin-top: 0.3rem;
   }
-}
-
-.gold-bar {
-  width: 48px;
-  height: 3px;
-  background-color: $gold;
-  border-radius: 2px;
-  margin: 1.2rem 0 1.8rem;
 }
 
 /* ============================================================
    BUTTONS
    ============================================================ */
-.btn-primary {
+.btn-yellow {
   display: inline-block;
-  padding: 14px 36px;
-  background-color: $gold;
-  color: $white;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  padding: 14px 32px;
+  background-color: $yellow;
+  color: $dark;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  border-radius: 2px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  margin-top: 2rem;
+  border-radius: 30px;
+  transition: background-color 0.25s;
 
-  &:hover {
-    background-color: darken($gold, 8%);
-    transform: translateY(-1px);
-  }
+  &:hover { background-color: $yellow-dark; color: $dark; }
 }
 
-.btn-secondary {
+.btn-outline-dark {
   display: inline-block;
-  padding: 13px 34px;
-  border: 1.5px solid $gold;
-  color: $gold;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  padding: 13px 30px;
+  border: 2px solid rgba($dark, 0.3);
+  color: $dark;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  border-radius: 2px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  margin-top: 2rem;
+  border-radius: 30px;
+  transition: border-color 0.25s, color 0.25s;
 
-  &:hover {
-    background-color: $gold;
-    color: $white;
-  }
+  &:hover { border-color: $dark; }
+}
+
+.btn-header {
+  display: inline-block;
+  padding: 10px 26px;
+  border: 1.5px solid $dark;
+  color: $dark;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 30px;
+  transition: background-color 0.25s, color 0.25s;
+
+  &:hover { background-color: $dark; color: $white; }
 }
 
 /* ============================================================
    HEADER
    ============================================================ */
-header {
+.site-header {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  transition: background-color 0.4s ease, box-shadow 0.4s ease;
-}
-
-header.transparent {
-  background-color: transparent;
-
-  .brand-name { color: $white; }
-
-  nav a { color: rgba(255, 255, 255, 0.9); }
-
-  nav a:hover { color: $white; }
-}
-
-header.scrolled {
-  background-color: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  background-color: rgba($cream, 0.97);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba($dark, 0.06);
+  transition: box-shadow 0.3s;
 
-  .brand-name { color: $dark; }
-
-  nav a { color: $text; }
-
-  nav a:hover { color: $gold; }
+  &.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.07); }
 }
 
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 40px;
+  padding: 16px 56px;
 }
 
-.header-brand {
+.header-logo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   text-decoration: none;
 }
 
-.logo {
-  height: 44px;
+.logo-badge {
   width: 44px;
+  height: 44px;
   border-radius: 50%;
-  object-fit: cover;
-}
-
-.brand-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  transition: color 0.3s ease;
-}
-
-header nav {
+  border: 1.5px solid $dark;
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  justify-content: center;
+  font-family: 'Rufina', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: $dark;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-family: 'Rufina', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: $dark;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+
+  small {
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    color: $text-light;
+    display: block;
+    font-family: 'Nunito Sans', sans-serif;
+    text-transform: uppercase;
+  }
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
 
   a {
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: $text;
+    transition: color 0.2s;
+
+    &:hover { color: $coral; }
   }
 }
 
 /* ============================================================
-   HERO
+   HERO SPLIT
+   ============================================================ */
+.hero-split {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: $cream;
+  padding-top: 80px;
+  overflow: hidden;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 64px 80px 72px;
+}
+
+.hero-tag {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: $coral;
+  margin-bottom: 1.4rem;
+}
+
+.hero-left h1 {
+  font-family: 'Rufina', serif;
+  font-size: 3.8rem;
+  font-weight: 700;
+  color: $dark;
+  line-height: 1.15;
+  margin-bottom: 1.4rem;
+}
+
+.hero-desc {
+  font-size: 0.97rem;
+  font-weight: 300;
+  color: $text-light;
+  line-height: 1.8;
+  max-width: 400px;
+  margin-bottom: 2.4rem;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-right {
+  position: relative;
+  min-height: 100%;
+}
+
+.hero-coral-block {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 15%;
+  background-color: $coral;
+  z-index: 0;
+}
+
+.hero-img {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 85%;
+  max-height: 85vh;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 4px;
+  z-index: 1;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+/* ============================================================
+   SERVICES
+   ============================================================ */
+.services {
+  padding: 96px 0;
+  background-color: $white;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.service-card {
+  background-color: $cream;
+  border-radius: 4px;
+  padding: 40px 28px;
+  text-align: center;
+  transition: box-shadow 0.3s, transform 0.3s;
+
+  &:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    transform: translateY(-4px);
+  }
+
+  .service-icon {
+    font-size: 1.8rem;
+    color: $coral;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-family: 'Rufina', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $dark;
+    margin-bottom: 0.7rem;
+  }
+
+  p {
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: $text-light;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+  }
+
+  .service-price {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $coral;
+  }
+}
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about-section {
+  padding: 96px 0;
+  background-color: $cream;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-pic {
+  width: 100%;
+  max-height: 540px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.about-text {
+  h2 {
+    font-family: 'Rufina', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: $dark;
+    margin: 0.4rem 0 1.4rem;
+    line-height: 1.2;
+  }
+
+  p {
+    font-size: 0.97rem;
+    font-weight: 300;
+    color: $text-light;
+    line-height: 1.85;
+    margin-bottom: 0.9rem;
+  }
+}
+
+/* ============================================================
+   CONTACT PAGE HERO
    ============================================================ */
 .hero {
   position: relative;
-  height: 100vh;
+  height: 50vh;
+  min-height: 340px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.35) 0%,
-    rgba(0, 0, 0, 0.5) 100%
-  );
+  background: rgba(0,0,0,0.45);
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 680px;
-  padding: 0 24px;
+  padding: 0 32px;
 
   .hero-eyebrow {
-    font-size: 0.75rem;
-    font-weight: 600;
+    font-size: 0.7rem;
+    font-weight: 700;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: $gold-light;
-    margin-bottom: 1.2rem;
+    color: $yellow;
+    margin-bottom: 1rem;
+    display: block;
   }
 
   h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.4rem;
-    font-weight: 600;
+    font-family: 'Rufina', serif;
+    font-size: 3rem;
+    font-weight: 700;
     color: $white;
     line-height: 1.2;
-    margin-bottom: 1.2rem;
-  }
-
-  .hero-sub {
-    font-size: 1.05rem;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.88);
-    letter-spacing: 0.02em;
-  }
-}
-
-.home-hero {
-  background-image: url('/assets/naisl-salon.jpg');
-}
-
-.contact-hero {
-  background-image: url('/assets/beauty-back.jpg');
-  height: 60vh;
-  min-height: 400px;
-}
-
-/* ============================================================
-   SERVICES SECTION
-   ============================================================ */
-.services {
-  padding: 96px 0;
-  background-color: $bg;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
-}
-
-.service-card {
-  background-color: $white;
-  border: 1px solid #ede5dc;
-  border-radius: 6px;
-  padding: 40px 28px;
-  text-align: center;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-
-  &:hover {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-    transform: translateY(-4px);
-  }
-
-  .service-icon {
-    font-size: 1.8rem;
-    color: $gold;
-    margin-bottom: 1.2rem;
-  }
-
-  h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: $dark;
     margin-bottom: 0.8rem;
   }
 
-  p {
-    font-size: 0.9rem;
+  .hero-sub {
+    font-size: 1rem;
     font-weight: 300;
-    color: $text-light;
-    line-height: 1.65;
+    color: rgba(255,255,255,0.82);
   }
 }
 
-/* ============================================================
-   ABOUT SECTION
-   ============================================================ */
-.about-section {
-  padding: 96px 0;
-  background-color: $white;
-}
-
-.about-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 72px;
-  align-items: center;
-}
-
-.about-pic {
-  width: 100%;
-  border-radius: 6px;
-  object-fit: cover;
-  max-height: 520px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
-}
-
-.about-text {
-  h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    font-weight: 600;
-    color: $dark;
-    margin-top: 0.4rem;
-    line-height: 1.25;
-  }
-
-  p {
-    font-size: 0.97rem;
-    font-weight: 300;
-    color: $text;
-    line-height: 1.8;
-    margin-bottom: 1rem;
-  }
-}
+.home-hero  { background-image: url('/assets/naisl-salon.jpg'); }
+.contact-hero { background-image: url('/assets/beauty-back.jpg'); }
 
 /* ============================================================
    CONTACT SECTION
    ============================================================ */
 .contact-section {
   padding: 96px 0;
-  background-color: $bg;
+  background-color: $white;
 }
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 64px;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 72px;
   align-items: start;
 }
 
 .contact-info {
   h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Rufina', serif;
     font-size: 2.2rem;
-    font-weight: 600;
+    font-weight: 700;
     color: $dark;
     margin-top: 0.4rem;
+    margin-bottom: 2rem;
+    line-height: 1.2;
   }
 }
 
@@ -394,7 +466,6 @@ header nav {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  margin-top: 0.5rem;
 }
 
 .info-item {
@@ -402,48 +473,30 @@ header nav {
   align-items: flex-start;
   gap: 1.2rem;
 
-  i {
-    font-size: 1.1rem;
-    color: $gold;
-    margin-top: 3px;
-    flex-shrink: 0;
-  }
-
-  div {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
+  i { font-size: 1rem; color: $coral; margin-top: 4px; flex-shrink: 0; width: 16px; }
+  div { display: flex; flex-direction: column; gap: 3px; }
 
   strong {
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: $dark;
   }
 
   span {
-    font-size: 0.97rem;
+    font-size: 0.95rem;
     font-weight: 300;
-    color: $text;
-
-    a {
-      color: $text;
-      transition: color 0.2s;
-      &:hover { color: $gold; }
-    }
+    color: $text-light;
+    a { color: $text-light; transition: color 0.2s; &:hover { color: $coral; } }
   }
 }
 
-.contact-map {
-  #map {
-    height: 400px;
-    width: 100%;
-    border-radius: 6px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-  }
+.contact-map #map {
+  height: 440px;
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.1);
 }
 
 /* ============================================================
@@ -451,45 +504,79 @@ header nav {
    ============================================================ */
 .site-footer {
   background-color: $dark;
-  color: rgba(255, 255, 255, 0.75);
-  padding: 64px 0 32px;
+  color: rgba(255,255,255,0.6);
+  padding: 72px 0 32px;
+  position: relative;
+  overflow: hidden;
 }
 
-.footer-grid {
+.footer-coral {
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 300px;
+  height: 300px;
+  background-color: $coral;
+  border-radius: 50%;
+  opacity: 0.15;
+}
+
+.footer-top {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-columns: 1.8fr 1fr 1fr 1fr;
   gap: 48px;
-  padding-bottom: 48px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 52px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
   margin-bottom: 28px;
 }
 
-.footer-logo {
-  height: 48px;
-  width: 48px;
+.footer-brand {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.footer-logo-badge {
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Rufina', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: $white;
+  flex-shrink: 0;
 }
 
-.footer-tagline {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.55);
-  line-height: 1.5;
+.footer-logo-text {
+  font-family: 'Rufina', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: $white;
+  display: block;
+  margin-bottom: 0.4rem;
 }
 
-.footer-links,
-.footer-contact {
-  h4 {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: $gold;
-    margin-bottom: 1.2rem;
-  }
+.footer-brand p {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.6;
+}
+
+.footer-links h4,
+.footer-contact h4,
+.footer-cta h4 {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $yellow;
+  margin-bottom: 1.2rem;
 }
 
 .footer-links ul {
@@ -501,30 +588,30 @@ header nav {
   a {
     font-size: 0.9rem;
     font-weight: 300;
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255,255,255,0.5);
     transition: color 0.2s;
-
-    &:hover { color: $white; }
+    &:hover { color: $yellow; }
   }
 }
 
-.footer-contact {
-  p {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    font-size: 0.9rem;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.65);
-    margin-bottom: 0.75rem;
+.footer-contact p {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 0.75rem;
 
-    i {
-      color: $gold;
-      font-size: 0.95rem;
-      margin-top: 2px;
-      flex-shrink: 0;
-    }
-  }
+  i { color: $coral; font-size: 0.9rem; margin-top: 2px; flex-shrink: 0; }
+}
+
+.footer-cta p {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 1.2rem;
+  line-height: 1.65;
 }
 
 .footer-bottom {
@@ -532,15 +619,313 @@ header nav {
   justify-content: space-between;
   align-items: center;
 
-  p {
+  p, a {
     font-size: 0.8rem;
     font-weight: 300;
-    color: rgba(255, 255, 255, 0.35);
-
-    a {
-      color: rgba(255, 255, 255, 0.45);
-      transition: color 0.2s;
-      &:hover { color: $white; }
-    }
+    color: rgba(255,255,255,0.3);
   }
+  a { transition: color 0.2s; &:hover { color: rgba(255,255,255,0.6); } }
+}
+
+/* ============================================================
+   BOOKING
+   ============================================================ */
+.booking-hero-section {
+  position: relative;
+  height: 45vh;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: $coral;
+  overflow: hidden;
+  padding-top: 80px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -60px;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: 10%;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+
+    .hero-eyebrow { color: rgba(255,255,255,0.7); }
+
+    h1 { color: $white; font-size: 2.8rem; }
+  }
+}
+
+.booking-section {
+  padding: 80px 0 96px;
+  background-color: $cream;
+}
+
+.booking-wrapper {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.booking-sidebar {
+  background-color: $white;
+  border-radius: 4px;
+  padding: 36px 28px;
+  position: sticky;
+  top: 100px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+
+  h3 {
+    font-family: 'Rufina', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: $dark;
+    margin-bottom: 1.4rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $border;
+  }
+}
+
+.service-price-list {
+  list-style: none;
+  margin-bottom: 1.8rem;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid $border;
+    font-size: 0.88rem;
+    &:last-child { border-bottom: none; }
+
+    .spl-name { color: $text; font-weight: 300; }
+    .spl-price { font-weight: 700; color: $coral; }
+  }
+}
+
+.booking-note {
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: $text-light;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  i { color: $coral; }
+}
+
+.booking-form-wrapper {
+  background-color: $white;
+  border-radius: 4px;
+  padding: 44px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+.form-section-title {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $text-light;
+  margin: 2rem 0 1.2rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid $border;
+  &:first-child { margin-top: 0; }
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+
+  label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $text-light;
+    margin-bottom: 6px;
+  }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid $border;
+  border-radius: 30px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: $text;
+  background-color: $white;
+  appearance: auto;
+  transition: border-color 0.2s;
+
+  &:focus { outline: none; border-color: $coral; }
+  &:disabled { background-color: $cream; color: $text-light; cursor: not-allowed; }
+}
+
+.price-display {
+  margin: -0.4rem 0 1rem;
+
+  .price-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: $coral;
+  }
+}
+
+.form-errors {
+  background-color: #fdf0f0;
+  border: 1px solid #f0c0c0;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 1.5rem;
+
+  p {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: #c0392b;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    &:last-child { margin-bottom: 0; }
+  }
+}
+
+.form-submit {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-booking {
+  display: inline-block;
+  padding: 14px 40px;
+  background-color: $yellow;
+  color: $dark;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.25s;
+
+  &:hover { background-color: $yellow-dark; }
+}
+
+.submit-note {
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: $text-light;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  i { color: $coral; }
+}
+
+/* SUCCESS / CANCEL */
+.result-page {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  background-color: $cream;
+  padding-top: 88px;
+}
+
+.result-inner {
+  text-align: center;
+  padding: 96px 48px;
+  width: 100%;
+
+  h1 {
+    font-family: 'Rufina', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: $dark;
+    margin: 1.2rem 0 1rem;
+  }
+}
+
+.result-icon {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin: 0 auto;
+  i { color: $white; }
+}
+
+.success-icon { background-color: #6aaa7a; }
+.cancel-icon  { background-color: $coral; }
+
+.result-sub {
+  font-size: 1rem;
+  font-weight: 300;
+  color: $text-light;
+  line-height: 1.8;
+  max-width: 500px;
+  margin: 0 auto 0.6rem;
+}
+
+.result-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.btn-ghost {
+  display: inline-block;
+  padding: 13px 30px;
+  border: 1.5px solid $border;
+  color: $text-light;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 30px;
+  transition: border-color 0.2s, color 0.2s;
+  &:hover { border-color: $dark; color: $dark; }
 }

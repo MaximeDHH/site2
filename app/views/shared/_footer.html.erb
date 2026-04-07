@@ -1,11 +1,14 @@
 <footer class="site-footer">
+  <div class="footer-coral"></div>
   <div class="container">
-    <div class="footer-grid">
+    <div class="footer-top">
       <div class="footer-brand">
-        <%= image_tag 'nails-logo.jpg', alt: 'Royal Nail', class: 'footer-logo' %>
-        <p class="footer-tagline">L'élégance à portée de main.</p>
+        <div class="footer-logo-badge">R</div>
+        <div>
+          <span class="footer-logo-text">Royal Nail</span>
+          <p>L'art de sublimer vos mains, à Lorient.</p>
+        </div>
       </div>
-
       <div class="footer-links">
         <h4>Navigation</h4>
         <ul>
@@ -15,18 +18,21 @@
           <li><%= link_to 'Contact', contact_path %></li>
         </ul>
       </div>
-
       <div class="footer-contact">
         <h4>Contact</h4>
         <p><i class="fa-solid fa-phone"></i> 06 27 35 81 88</p>
         <p><i class="fa-solid fa-location-dot"></i> 64 rue Brancion, 75015 Paris</p>
         <p><i class="fa-solid fa-clock"></i> Lun – Dim : 10h – 20h</p>
       </div>
+      <div class="footer-cta">
+        <h4>Réservation</h4>
+        <p>Prenez rendez-vous en ligne simplement.</p>
+        <%= link_to 'Réserver maintenant', new_booking_path, class: 'btn-yellow' %>
+      </div>
     </div>
-
     <div class="footer-bottom">
       <p>© 2025 Royal Nail — Tous droits réservés</p>
-      <p><a href="#">Mentions légales</a></p>
+      <a href="#">Mentions légales</a>
     </div>
   </div>
 </footer>

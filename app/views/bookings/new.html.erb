@@ -1,0 +1,146 @@
+<section class="booking-hero-section">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Royal Nail</p>
+    <h1>Réserver un soin</h1>
+  </div>
+</section>
+
+<section class="booking-section">
+  <div class="container">
+    <div class="booking-wrapper">
+
+      <!-- RECAP SERVICES -->
+      <aside class="booking-sidebar">
+        <h3>Nos prestations</h3>
+        <ul class="service-price-list">
+          <% Booking::SERVICES.each do |name, cents| %>
+            <li>
+              <span class="spl-name"><%= name %></span>
+              <span class="spl-price"><%= cents / 100 %> €</span>
+            </li>
+          <% end %>
+        </ul>
+        <div class="booking-note">
+          <i class="fa-solid fa-lock"></i>
+          Paiement sécurisé par Stripe
+        </div>
+      </aside>
+
+      <!-- FORMULAIRE -->
+      <div class="booking-form-wrapper">
+        <%= form_with model: @booking, url: bookings_path, id: 'booking-form' do |f| %>
+
+          <% if @booking.errors.any? %>
+            <div class="form-errors">
+              <% @booking.errors.full_messages.each do |msg| %>
+                <p><i class="fa-solid fa-circle-exclamation"></i> <%= msg %></p>
+              <% end %>
+            </div>
+          <% end %>
+
+          <div class="form-section-title">Votre soin</div>
+
+          <div class="form-group">
+            <%= f.label :service, 'Prestation' %>
+            <%= f.select :service,
+                  Booking::SERVICES.map { |name, cents| ["#{name} — #{cents / 100} €", name] },
+                  { prompt: 'Choisissez une prestation' },
+                  class: 'form-control', id: 'booking_service' %>
+          </div>
+
+          <div class="price-display" id="price-display"></div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <%= f.label :date, 'Date' %>
+              <%= f.date_field :date,
+                    min: Date.today + 1,
+                    class: 'form-control', id: 'booking_date' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :time_slot, 'Créneau' %>
+              <%= f.select :time_slot,
+                    Booking::TIME_SLOTS.map { |s| [s, s] },
+                    { prompt: 'Choisissez d\'abord une date' },
+                    class: 'form-control', id: 'booking_time_slot',
+                    disabled: true %>
+            </div>
+          </div>
+
+          <div class="form-section-title">Vos coordonnées</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <%= f.label :name, 'Nom complet' %>
+              <%= f.text_field :name, class: 'form-control', placeholder: 'Marie Dupont' %>
+            </div>
+            <div class="form-group">
+              <%= f.label :phone, 'Téléphone' %>
+              <%= f.telephone_field :phone, class: 'form-control', placeholder: '06 12 34 56 78' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :email, 'Email' %>
+            <%= f.email_field :email, class: 'form-control', placeholder: 'marie@exemple.fr' %>
+          </div>
+
+          <div class="form-submit">
+            <%= f.submit 'Confirmer et payer →', class: 'btn-booking' %>
+            <p class="submit-note"><i class="fa-solid fa-shield-halved"></i> Vous serez redirigé vers Stripe pour le paiement sécurisé</p>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const PRICES = <%= Booking::SERVICES.transform_values { |v| v / 100 }.to_json.html_safe %>;
+
+  const serviceSelect  = document.getElementById('booking_service');
+  const dateField      = document.getElementById('booking_date');
+  const timeSlotSelect = document.getElementById('booking_time_slot');
+  const priceDisplay   = document.getElementById('price-display');
+
+  // Affiche le prix quand on change de prestation
+  serviceSelect.addEventListener('change', function () {
+    const price = PRICES[this.value];
+    priceDisplay.innerHTML = price
+      ? `<span class="price-tag"><i class="fa-solid fa-tag"></i> ${price} €</span>`
+      : '';
+  });
+
+  // Charge les créneaux disponibles quand on choisit une date
+  dateField.addEventListener('change', async function () {
+    const date = this.value;
+    if (!date) return;
+
+    timeSlotSelect.disabled = true;
+    timeSlotSelect.innerHTML = '<option value="">Chargement...</option>';
+
+    try {
+      const res  = await fetch(`/booking/slots?date=${date}`);
+      const data = await res.json();
+
+      if (data.available.length === 0) {
+        timeSlotSelect.innerHTML = '<option value="">Aucun créneau disponible</option>';
+      } else {
+        timeSlotSelect.innerHTML = '<option value="">Choisissez un créneau</option>';
+        data.available.forEach(slot => {
+          const opt = document.createElement('option');
+          opt.value = slot;
+          opt.textContent = slot;
+          timeSlotSelect.appendChild(opt);
+        });
+        timeSlotSelect.disabled = false;
+      }
+    } catch (e) {
+      timeSlotSelect.innerHTML = '<option value="">Erreur, réessayez</option>';
+      timeSlotSelect.disabled = false;
+    }
+  });
+</script>

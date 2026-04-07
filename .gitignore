@@ -31,5 +31,11 @@
 
 /public/assets
 
+# SQLite databases
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/db/*.sqlite3-wal
+/db/*.sqlite3-shm
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key

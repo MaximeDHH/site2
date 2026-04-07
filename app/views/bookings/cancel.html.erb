@@ -1,0 +1,18 @@
+<section class="result-page">
+  <div class="result-blob"></div>
+  <div class="container result-inner">
+    <div class="result-icon cancel-icon">
+      <i class="fa-solid fa-xmark"></i>
+    </div>
+    <h1>Paiement annulé</h1>
+    <p class="result-sub">Votre réservation n'a pas été finalisée. Vous pouvez réessayer à tout moment.</p>
+    <div class="result-actions">
+      <%= link_to new_booking_path, class: 'btn-outline' do %>
+        Réessayer
+      <% end %>
+      <%= link_to root_path, class: 'btn-ghost' do %>
+        Retour à l'accueil
+      <% end %>
+    </div>
+  </div>
+</section>

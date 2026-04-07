@@ -1,14 +1,20 @@
-<header class="header transparent">
+<header class="site-header">
   <div class="header-inner">
-    <a href="<%= root_path %>" class="header-brand">
-      <%= image_tag 'nails-logo.jpg', alt: 'Royal Nail', class: 'logo' %>
-      <span class="brand-name">Royal Nail</span>
-    </a>
-    <nav>
+    <%= link_to root_path, class: 'header-logo' do %>
+      <div class="logo-badge">
+        <span>R</span>
+      </div>
+      <span class="logo-text">Royal<br><small>Nail</small></span>
+    <% end %>
+
+    <nav class="header-nav">
       <%= link_to 'Accueil', root_path %>
       <a href="#">Onglerie</a>
       <a href="#">Massages</a>
       <%= link_to 'Contact', contact_path %>
+      <a href="#">Galerie</a>
     </nav>
+
+    <%= link_to 'Réserver', new_booking_path, class: 'btn-header' %>
   </div>
 </header>

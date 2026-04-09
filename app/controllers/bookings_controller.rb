@@ -71,7 +71,11 @@ class BookingsController < ApplicationController
     if event['type'] == 'checkout.session.completed'
       session  = event['data']['object']
       booking  = Booking.find_by(stripe_session_id: session['id'])
-      booking&.update!(status: 'confirmed')
+      if booking
+        booking.update!(status: 'confirmed')
+        BookingMailer.confirmation(booking).deliver_later
+        SmsService.send_booking_confirmed(booking)
+      end
     end
 
     head :ok

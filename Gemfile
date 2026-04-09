@@ -25,6 +25,7 @@ gem "jbuilder"
 gem "sassc-rails"
 gem "sqlite3", "~> 1.4"
 gem "stripe"
+gem "twilio-ruby"
 gem "dotenv-rails"
 
 # Use Redis adapter to run Action Cable in production
@@ -48,6 +49,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "letter_opener"
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 

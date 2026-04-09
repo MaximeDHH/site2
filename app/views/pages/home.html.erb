@@ -1,7 +1,8 @@
 <!-- HERO SPLIT -->
 <section class="hero-split">
   <div class="hero-left">
-    <p class="hero-tag">Salon d'onglerie · Lorient</p>
+    <p class="hero-tag">Salon d'onglerie · Paris
+    </p>
     <h1>Des mains sublimes,<br>pour vos plus<br>beaux moments.</h1>
     <p class="hero-desc">Chez Royal Nail, des professionnelles passionnées subliment vos mains dans un cadre chaleureux et raffiné.</p>
     <div class="hero-actions">
@@ -10,7 +11,7 @@
     </div>
   </div>
   <div class="hero-right">
-    <%= image_tag 'naisl-salon.jpg', alt: 'Royal Nail', class: 'hero-img' %>
+    <%= image_tag 'pexels-cottonbro-5871914.jpg', alt: 'Royal Nail', class: 'hero-img' %>
   </div>
 </section>
 
@@ -21,32 +22,81 @@
       <p class="section-eyebrow">Ce que nous proposons</p>
       <h2>Nos prestations</h2>
     </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon"><i class="fa-solid fa-hand-sparkles"></i></div>
-        <h3>Manucure classique</h3>
-        <p>Soin complet des ongles, repoussage des cuticules et vernis couleur au choix.</p>
-        <span class="service-price">25 €</span>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="fa-solid fa-gem"></i></div>
-        <h3>Pose en gel</h3>
-        <p>Ongles durables et brillants, modelés à la perfection selon votre style.</p>
-        <span class="service-price">45 €</span>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="fa-solid fa-star"></i></div>
-        <h3>Nail art</h3>
-        <p>Motifs uniques, dégradés et décorations pour une touche de créativité.</p>
-        <span class="service-price">55 €</span>
-      </div>
-      <div class="service-card">
-        <div class="service-icon"><i class="fa-solid fa-spa"></i></div>
-        <h3>Soin des mains</h3>
-        <p>Gommage, masque nourrissant et massage pour des mains douces et reposées.</p>
-        <span class="service-price">35 €</span>
-      </div>
-    </div>
+    <div class="accordion">
+
+      <%# ── MANUCURE ── %>
+      <details class="accordion-item">
+        <summary class="accordion-header">
+          <span class="accordion-title">Manucure</span>
+          <span class="accordion-meta">20 prestations — dès 10 €</span>
+          <span class="accordion-chevron"></span>
+        </summary>
+        <div class="accordion-inner">
+            <div class="service-row"><span class="service-row-name">Manucure</span><span class="service-row-duration">30 min</span><span class="service-row-price">15 €</span></div>
+            <div class="service-row"><span class="service-row-name">Manucure & Vernis coloré</span><span class="service-row-duration">30 min</span><span class="service-row-price">20 €</span></div>
+            <div class="service-row"><span class="service-row-name">Manucure & Vernis French</span><span class="service-row-duration">45 min</span><span class="service-row-price">25 €</span></div>
+            <div class="service-row"><span class="service-row-name">Manucure & Vernis semi-permanent coloré</span><span class="service-row-duration">45 min</span><span class="service-row-price">40 €</span></div>
+            <div class="service-row"><span class="service-row-name">Manucure & Vernis semi-permanent French</span><span class="service-row-duration">1 h</span><span class="service-row-price">45 €</span></div>
+            <div class="service-row"><span class="service-row-name">Pose de vernis coloré</span><span class="service-row-duration">15 min</span><span class="service-row-price">10 €</span></div>
+            <div class="service-row"><span class="service-row-name">Pose de vernis French</span><span class="service-row-duration">30 min</span><span class="service-row-price">15 €</span></div>
+            <div class="service-row"><span class="service-row-name">Pose de vernis semi-permanent coloré</span><span class="service-row-duration">45 min</span><span class="service-row-price">30 €</span></div>
+            <div class="service-row"><span class="service-row-name">Pose de vernis semi-permanent French</span><span class="service-row-duration">45 min</span><span class="service-row-price">35 €</span></div>
+            <div class="service-row"><span class="service-row-name">Pose de faux ongles en résine</span><span class="service-row-duration">30 min</span><span class="service-row-price">25 €</span></div>
+            <div class="service-row"><span class="service-row-name">Pose de capsules en résine & Vernis coloré</span><span class="service-row-duration">1 h</span><span class="service-row-price">32 €</span></div>
+            <div class="service-row"><span class="service-row-name">Pose complète résine & Vernis semi-permanent</span><span class="service-row-duration">1 h 30</span><span class="service-row-price">42 €</span></div>
+            <div class="service-row"><span class="service-row-name">Pose de faux ongles en gel</span><span class="service-row-duration">1 h</span><span class="service-row-price">40 €</span></div>
+            <div class="service-row"><span class="service-row-name">Pose de faux ongles en gel & Vernis coloré</span><span class="service-row-duration">1 h 30</span><span class="service-row-price">50 €</span></div>
+            <div class="service-row"><span class="service-row-name">Pose de faux ongles en gel & Vernis semi-permanent</span><span class="service-row-duration">1 h 30</span><span class="service-row-price">60 €</span></div>
+            <div class="service-row"><span class="service-row-name">Remplissage résine & Vernis coloré</span><span class="service-row-duration">45 min</span><span class="service-row-price">28 €</span></div>
+            <div class="service-row"><span class="service-row-name">Remplissage résine & Vernis semi-permanent</span><span class="service-row-duration">1 h</span><span class="service-row-price">38 €</span></div>
+            <div class="service-row"><span class="service-row-name">Remplissage gel & Vernis coloré</span><span class="service-row-duration">1 h</span><span class="service-row-price">45 €</span></div>
+            <div class="service-row"><span class="service-row-name">Beauté des mains & pieds — Vernis coloré</span><span class="service-row-duration">1 h 30</span><span class="service-row-price">50 €</span></div>
+            <div class="service-row"><span class="service-row-name">Beauté des mains & pieds — Vernis semi-permanent</span><span class="service-row-duration">1 h 30</span><span class="service-row-price">80 €</span></div>
+        </div>
+      </details>
+
+      <%# ── BEAUTÉ DES PIEDS ── %>
+      <details class="accordion-item">
+        <summary class="accordion-header">
+          <span class="accordion-title">Beauté des pieds</span>
+          <span class="accordion-meta">9 prestations — dès 15 €</span>
+          <span class="accordion-chevron"></span>
+        </summary>
+        <div class="accordion-inner">
+          <div class="service-row"><span class="service-row-name">Beauté des pieds</span><span class="service-row-duration">30 min</span><span class="service-row-price">30 €</span></div>
+          <div class="service-row"><span class="service-row-name">Beauté des pieds & Vernis coloré</span><span class="service-row-duration">45 min</span><span class="service-row-price">35 €</span></div>
+          <div class="service-row"><span class="service-row-name">Beauté des pieds & Vernis French</span><span class="service-row-duration">1 h</span><span class="service-row-price">40 €</span></div>
+          <div class="service-row"><span class="service-row-name">Beauté des pieds & Vernis semi-permanent</span><span class="service-row-duration">1 h</span><span class="service-row-price">45 €</span></div>
+          <div class="service-row"><span class="service-row-name">Beauté des pieds & Vernis semi-permanent French</span><span class="service-row-duration">1 h</span><span class="service-row-price">50 €</span></div>
+          <div class="service-row"><span class="service-row-name">Pose de vernis coloré sur les pieds</span><span class="service-row-duration">30 min</span><span class="service-row-price">15 €</span></div>
+          <div class="service-row"><span class="service-row-name">Pose de vernis French sur les pieds</span><span class="service-row-duration">30 min</span><span class="service-row-price">20 €</span></div>
+          <div class="service-row"><span class="service-row-name">Pose de vernis semi-permanent coloré sur les pieds</span><span class="service-row-duration">30 min</span><span class="service-row-price">30 €</span></div>
+          <div class="service-row"><span class="service-row-name">Pose de vernis semi-permanent French sur les pieds</span><span class="service-row-duration">45 min</span><span class="service-row-price">35 €</span></div>
+        </div>
+      </details>
+
+      <%# ── ÉPILATION ── %>
+      <details class="accordion-item">
+        <summary class="accordion-header">
+          <span class="accordion-title">Épilation</span>
+          <span class="accordion-meta">10 prestations — dès 10 €</span>
+          <span class="accordion-chevron"></span>
+        </summary>
+        <div class="accordion-inner">
+          <div class="service-row"><span class="service-row-name">Aisselles</span><span class="service-row-duration">15 min</span><span class="service-row-price">10 €</span></div>
+          <div class="service-row"><span class="service-row-name">Demi-bras</span><span class="service-row-duration">30 min</span><span class="service-row-price">15 €</span></div>
+          <div class="service-row"><span class="service-row-name">Bras entiers</span><span class="service-row-duration">30 min</span><span class="service-row-price">25 €</span></div>
+          <div class="service-row"><span class="service-row-name">Demi-jambes</span><span class="service-row-duration">30 min</span><span class="service-row-price">15 €</span></div>
+          <div class="service-row"><span class="service-row-name">Jambes entières</span><span class="service-row-duration">30 min</span><span class="service-row-price">30 €</span></div>
+          <div class="service-row"><span class="service-row-name">Maillot simple</span><span class="service-row-duration">15 min</span><span class="service-row-price">15 €</span></div>
+          <div class="service-row"><span class="service-row-name">Maillot intégral</span><span class="service-row-duration">30 min</span><span class="service-row-price">30 €</span></div>
+          <div class="service-row"><span class="service-row-name">Fesses</span><span class="service-row-duration">15 min</span><span class="service-row-price">12 €</span></div>
+          <div class="service-row"><span class="service-row-name">Pack demi-jambes + aisselles + maillot intégral</span><span class="service-row-duration">1 h</span><span class="service-row-price">50 €</span></div>
+          <div class="service-row"><span class="service-row-name">Pack jambes entières + aisselles + maillot simple</span><span class="service-row-duration">1 h</span><span class="service-row-price">50 €</span></div>
+        </div>
+      </details>
+
+    </div><%# /accordion %>
   </div>
 </section>
 

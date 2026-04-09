@@ -19,12 +19,16 @@ class Admin::BookingsController < AdminController
   def confirm
     @booking = Booking.find(params[:id])
     @booking.update!(status: 'confirmed')
+    BookingMailer.confirmation(@booking).deliver_later
+    SmsService.send_booking_confirmed(@booking)
     redirect_to admin_bookings_path, notice: "Réservation ##{@booking.id} confirmée."
   end
 
   def cancel
     @booking = Booking.find(params[:id])
     @booking.update!(status: 'cancelled')
+    BookingMailer.cancellation(@booking).deliver_later
+    SmsService.send_booking_cancelled(@booking)
     redirect_to admin_bookings_path, notice: "Réservation ##{@booking.id} annulée."
   end
 end

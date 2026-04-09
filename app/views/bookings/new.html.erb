@@ -10,25 +10,8 @@
   <div class="container">
     <div class="booking-wrapper">
 
-      <!-- RECAP SERVICES -->
-      <aside class="booking-sidebar">
-        <h3>Nos prestations</h3>
-        <ul class="service-price-list">
-          <% Booking::SERVICES.each do |name, cents| %>
-            <li>
-              <span class="spl-name"><%= name %></span>
-              <span class="spl-price"><%= cents / 100 %> €</span>
-            </li>
-          <% end %>
-        </ul>
-        <div class="booking-note">
-          <i class="fa-solid fa-lock"></i>
-          Paiement sécurisé par Stripe
-        </div>
-      </aside>
-
       <!-- FORMULAIRE -->
-      <div class="booking-form-wrapper">
+      <div class="booking-form-wrapper" style="max-width: 680px; margin: 0 auto;">
         <%= form_with model: @booking, url: bookings_path, id: 'booking-form' do |f| %>
 
           <% if @booking.errors.any? %>
@@ -44,7 +27,11 @@
           <div class="form-group">
             <%= f.label :service, 'Prestation' %>
             <%= f.select :service,
-                  Booking::SERVICES.map { |name, cents| ["#{name} — #{cents / 100} €", name] },
+                  grouped_options_for_select([
+                    ['Manucure', Booking::SERVICES_BY_CATEGORY['Manucure'].map { |name, cents| ["#{name} — #{cents / 100} €", name] }],
+                    ['Beauté des pieds', Booking::SERVICES_BY_CATEGORY['Beauté des pieds'].map { |name, cents| ["#{name} — #{cents / 100} €", name] }],
+                    ['Épilation', Booking::SERVICES_BY_CATEGORY['Épilation'].map { |name, cents| ["#{name} — #{cents / 100} €", name] }],
+                  ], @booking.service),
                   { prompt: 'Choisissez une prestation' },
                   class: 'form-control', id: 'booking_service' %>
           </div>
@@ -101,46 +88,52 @@
 <script>
   const PRICES = <%= Booking::SERVICES.transform_values { |v| v / 100 }.to_json.html_safe %>;
 
-  const serviceSelect  = document.getElementById('booking_service');
-  const dateField      = document.getElementById('booking_date');
-  const timeSlotSelect = document.getElementById('booking_time_slot');
-  const priceDisplay   = document.getElementById('price-display');
+  function initBookingForm() {
+    const serviceSelect  = document.getElementById('booking_service');
+    const dateField      = document.getElementById('booking_date');
+    const timeSlotSelect = document.getElementById('booking_time_slot');
+    const priceDisplay   = document.getElementById('price-display');
 
-  // Affiche le prix quand on change de prestation
-  serviceSelect.addEventListener('change', function () {
-    const price = PRICES[this.value];
-    priceDisplay.innerHTML = price
-      ? `<span class="price-tag"><i class="fa-solid fa-tag"></i> ${price} €</span>`
-      : '';
-  });
+    if (!serviceSelect) return;
 
-  // Charge les créneaux disponibles quand on choisit une date
-  dateField.addEventListener('change', async function () {
-    const date = this.value;
-    if (!date) return;
+    serviceSelect.addEventListener('change', function () {
+      const price = PRICES[this.value];
+      priceDisplay.innerHTML = price
+        ? `<span class="price-tag"><i class="fa-solid fa-tag"></i> ${price} €</span>`
+        : '';
+    });
 
-    timeSlotSelect.disabled = true;
-    timeSlotSelect.innerHTML = '<option value="">Chargement...</option>';
+    dateField.addEventListener('change', async function () {
+      const date = this.value;
+      if (!date) return;
 
-    try {
-      const res  = await fetch(`/booking/slots?date=${date}`);
-      const data = await res.json();
+      timeSlotSelect.disabled = true;
+      timeSlotSelect.innerHTML = '<option value="">Chargement...</option>';
 
-      if (data.available.length === 0) {
-        timeSlotSelect.innerHTML = '<option value="">Aucun créneau disponible</option>';
-      } else {
-        timeSlotSelect.innerHTML = '<option value="">Choisissez un créneau</option>';
-        data.available.forEach(slot => {
-          const opt = document.createElement('option');
-          opt.value = slot;
-          opt.textContent = slot;
-          timeSlotSelect.appendChild(opt);
-        });
+      try {
+        const res  = await fetch(`/booking/slots?date=${date}`);
+        const data = await res.json();
+
+        if (data.available.length === 0) {
+          timeSlotSelect.innerHTML = '<option value="">Aucun créneau disponible</option>';
+          timeSlotSelect.disabled = false;
+        } else {
+          timeSlotSelect.innerHTML = '<option value="">Choisissez un créneau</option>';
+          data.available.forEach(slot => {
+            const opt = document.createElement('option');
+            opt.value = slot;
+            opt.textContent = slot;
+            timeSlotSelect.appendChild(opt);
+          });
+          timeSlotSelect.disabled = false;
+        }
+      } catch (e) {
+        timeSlotSelect.innerHTML = '<option value="">Erreur, réessayez</option>';
         timeSlotSelect.disabled = false;
       }
-    } catch (e) {
-      timeSlotSelect.innerHTML = '<option value="">Erreur, réessayez</option>';
-      timeSlotSelect.disabled = false;
-    }
-  });
+    });
+  }
+
+  document.addEventListener('turbo:load', initBookingForm);
+  document.addEventListener('DOMContentLoaded', initBookingForm);
 </script>

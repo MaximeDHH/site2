@@ -5,16 +5,14 @@
 /* ============================================================
    VARIABLES
    ============================================================ */
-$coral:      #e8391d;
-$coral-dark: #c92e14;
-$yellow:     #f0c040;
-$yellow-dark:#d9ab30;
-$cream:      #faf8f4;
-$white:      #ffffff;
-$dark:       #1a1a1a;
-$text:       #3a3a3a;
-$text-light: #888888;
-$border:     #e8e0d8;
+$sand:       #FAF5F3;
+$sand-dark:  #F0E6E2;
+$blush:      #B87878;
+$blush-dark: #9E6060;
+$stone:      #9A8585;
+$ink:        #221C1C;
+$white:      #FFFFFF;
+$border:     #EAD8D5;
 
 /* ============================================================
    RESET & BASE
@@ -23,10 +21,10 @@ $border:     #e8e0d8;
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  color: $text;
-  background: $cream;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  color: $ink;
+  background: $sand;
   line-height: 1.6;
 }
 
@@ -36,84 +34,85 @@ img { display: block; max-width: 100%; }
 /* ============================================================
    LAYOUT
    ============================================================ */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 56px; }
+.container { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
 
 /* ============================================================
    HELPERS
    ============================================================ */
 .section-eyebrow {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: $coral;
-  margin-bottom: 0.6rem;
+  color: $stone;
+  margin-bottom: 0.7rem;
   display: block;
 }
 
 .section-heading {
-  text-align: center;
-  margin-bottom: 3.5rem;
+  margin-bottom: 4rem;
 
   h2 {
-    font-family: 'Rufina', serif;
-    font-size: 2.6rem;
-    font-weight: 700;
-    color: $dark;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: $ink;
     margin-top: 0.3rem;
+    line-height: 1.2;
   }
 }
 
 /* ============================================================
    BUTTONS
    ============================================================ */
+/* btn-yellow is kept as the primary dark CTA */
 .btn-yellow {
   display: inline-block;
-  padding: 14px 32px;
-  background-color: $yellow;
-  color: $dark;
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  padding: 13px 32px;
+  background-color: $ink;
+  color: $white;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  border-radius: 30px;
-  transition: background-color 0.25s;
+  border-radius: 2px;
+  transition: background-color 0.22s;
 
-  &:hover { background-color: $yellow-dark; color: $dark; }
+  &:hover { background-color: $blush; color: $white; }
 }
 
 .btn-outline-dark {
   display: inline-block;
-  padding: 13px 30px;
-  border: 2px solid rgba($dark, 0.3);
-  color: $dark;
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  padding: 12px 30px;
+  border: 1px solid rgba($ink, 0.28);
+  color: $ink;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  border-radius: 30px;
-  transition: border-color 0.25s, color 0.25s;
+  border-radius: 2px;
+  transition: border-color 0.22s, background-color 0.22s, color 0.22s;
 
-  &:hover { border-color: $dark; }
+  &:hover { border-color: $ink; background-color: $ink; color: $white; }
 }
 
 .btn-header {
   display: inline-block;
-  padding: 10px 26px;
-  border: 1.5px solid $dark;
-  color: $dark;
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  padding: 9px 22px;
+  border: 1px solid rgba($ink, 0.28);
+  color: $ink;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  border-radius: 30px;
-  transition: background-color 0.25s, color 0.25s;
+  border-radius: 2px;
+  transition: background-color 0.22s, color 0.22s, border-color 0.22s;
 
-  &:hover { background-color: $dark; color: $white; }
+  &:hover { background-color: $ink; color: $white; border-color: $ink; }
 }
 
 /* ============================================================
@@ -123,20 +122,21 @@ img { display: block; max-width: 100%; }
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000;
-  background-color: rgba($cream, 0.97);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba($dark, 0.06);
-  transition: box-shadow 0.3s;
+  z-index: 100;
+  background-color: rgba($sand, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
 
-  &.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.07); }
+  &.scrolled { border-bottom-color: $border; }
 }
 
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 56px;
+  padding: 18px 48px;
 }
 
 .header-logo {
@@ -147,36 +147,35 @@ img { display: block; max-width: 100%; }
 }
 
 .logo-badge {
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  border: 1.5px solid $dark;
+  border: 1px solid $ink;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Rufina', serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: $dark;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: $ink;
   flex-shrink: 0;
 }
 
 .logo-text {
-  font-family: 'Rufina', serif;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: $dark;
-  line-height: 1.2;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: $ink;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
 
   small {
-    font-size: 0.72rem;
+    font-size: 0.65rem;
     font-weight: 400;
-    letter-spacing: 0.14em;
-    color: $text-light;
+    letter-spacing: 0.16em;
+    color: $stone;
     display: block;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     text-transform: uppercase;
   }
 }
@@ -187,14 +186,14 @@ img { display: block; max-width: 100%; }
   gap: 2.4rem;
 
   a {
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    color: $text;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: $stone;
     transition: color 0.2s;
 
-    &:hover { color: $coral; }
+    &:hover { color: $ink; }
   }
 }
 
@@ -202,11 +201,11 @@ img { display: block; max-width: 100%; }
    HERO SPLIT
    ============================================================ */
 .hero-split {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background-color: $cream;
-  padding-top: 80px;
+  background-color: $sand;
+  padding-top: 76px;
   overflow: hidden;
 }
 
@@ -214,167 +213,225 @@ img { display: block; max-width: 100%; }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 80px 64px 80px 72px;
+  padding: 80px 56px 80px 80px;
 }
 
 .hero-tag {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: $coral;
-  margin-bottom: 1.4rem;
+  color: $stone;
+  margin-bottom: 1.8rem;
 }
 
 .hero-left h1 {
-  font-family: 'Rufina', serif;
-  font-size: 3.8rem;
-  font-weight: 700;
-  color: $dark;
-  line-height: 1.15;
-  margin-bottom: 1.4rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4.4rem;
+  font-weight: 400;
+  color: $ink;
+  line-height: 1.1;
+  margin-bottom: 1.6rem;
+  letter-spacing: -0.01em;
 }
 
 .hero-desc {
-  font-size: 0.97rem;
+  font-size: 0.95rem;
   font-weight: 300;
-  color: $text-light;
-  line-height: 1.8;
-  max-width: 400px;
-  margin-bottom: 2.4rem;
+  color: $stone;
+  line-height: 1.85;
+  max-width: 380px;
+  margin-bottom: 2.8rem;
 }
 
 .hero-actions {
   display: flex;
   align-items: center;
   gap: 1rem;
-  flex-wrap: wrap;
 }
 
 .hero-right {
   position: relative;
-  min-height: 100%;
+  overflow: hidden;
+  background-color: $sand-dark;
 }
 
-.hero-coral-block {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 15%;
-  background-color: $coral;
-  z-index: 0;
-}
+/* No coral block — image fills the full right panel */
+.hero-coral-block { display: none; }
 
 .hero-img {
   position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  width: 85%;
-  max-height: 85vh;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center top;
-  border-radius: 4px;
-  z-index: 1;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
 }
 
 /* ============================================================
    SERVICES
    ============================================================ */
 .services {
-  padding: 96px 0;
+  padding: 104px 0;
   background-color: $white;
 }
 
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+/* Accordion — <details>/<summary> natif */
+.accordion-item {
+  border-bottom: 1px solid $border;
+
+  &:first-child { border-top: 1px solid $border; }
 }
 
-.service-card {
-  background-color: $cream;
-  border-radius: 4px;
-  padding: 40px 28px;
-  text-align: center;
-  transition: box-shadow 0.3s, transform 0.3s;
+.accordion-header {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.4rem 0;
+  cursor: pointer;
+  user-select: none;
 
-  &:hover {
-    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-    transform: translateY(-4px);
-  }
+  /* supprime le triangle natif navigateur */
+  &::-webkit-details-marker { display: none; }
+  &::marker { display: none; }
 
-  .service-icon {
-    font-size: 1.8rem;
-    color: $coral;
-    margin-bottom: 1rem;
-  }
+  &:hover .accordion-title { color: $blush; }
+}
 
-  h3 {
-    font-family: 'Rufina', serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: $dark;
-    margin-bottom: 0.7rem;
-  }
+details[open] .accordion-header {
+  .accordion-title { color: $blush; }
+  .accordion-chevron { transform: rotate(180deg); }
+}
 
-  p {
-    font-size: 0.88rem;
-    font-weight: 300;
-    color: $text-light;
-    line-height: 1.7;
-    margin-bottom: 1.2rem;
-  }
+.accordion-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: $ink;
+  transition: color 0.2s;
+}
 
-  .service-price {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: $coral;
+.accordion-meta {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 300;
+  color: $stone;
+  letter-spacing: 0.04em;
+  flex: 1;
+}
+
+.accordion-chevron {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.28s ease;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-right: 1.5px solid $stone;
+    border-bottom: 1.5px solid $stone;
+    transform: rotate(45deg) translateY(-3px);
   }
+}
+
+.accordion-inner {
+  padding-bottom: 1rem;
+}
+
+/* Services by category */
+.services-category { margin-bottom: 0; }
+.services-category-title { display: none; }
+
+/* .services-list — no extra styles needed, category title provides the top border */
+
+.service-row {
+  display: grid;
+  grid-template-columns: 1fr 80px 72px;
+  align-items: baseline;
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 1px solid $border;
+
+  &:hover .service-row-name { color: $blush; }
+}
+
+.service-row-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: $ink;
+  transition: color 0.2s;
+}
+
+.service-row-duration {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: $stone;
+  white-space: nowrap;
+}
+
+.service-row-price {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: $ink;
+  text-align: right;
+  white-space: nowrap;
 }
 
 /* ============================================================
    ABOUT
    ============================================================ */
 .about-section {
-  padding: 96px 0;
-  background-color: $cream;
+  padding: 104px 0;
+  background-color: $sand;
 }
 
 .about-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 96px;
   align-items: center;
 }
 
 .about-pic {
   width: 100%;
-  max-height: 540px;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
-  border-radius: 4px;
+  object-position: center;
+  border-radius: 2px;
 }
 
 .about-text {
   h2 {
-    font-family: 'Rufina', serif;
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: $dark;
-    margin: 0.4rem 0 1.4rem;
-    line-height: 1.2;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: $ink;
+    margin: 0.5rem 0 1.6rem;
+    line-height: 1.15;
   }
 
   p {
-    font-size: 0.97rem;
+    font-size: 0.95rem;
     font-weight: 300;
-    color: $text-light;
-    line-height: 1.85;
-    margin-bottom: 0.9rem;
+    color: $stone;
+    line-height: 1.9;
+    margin-bottom: 1rem;
+    max-width: 460px;
+  }
+
+  .btn-yellow {
+    margin-top: 0.8rem;
   }
 }
 
@@ -397,7 +454,7 @@ img { display: block; max-width: 100%; }
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba($ink, 0.48);
 }
 
 .hero-content {
@@ -406,39 +463,39 @@ img { display: block; max-width: 100%; }
   padding: 0 32px;
 
   .hero-eyebrow {
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.22em;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: $yellow;
+    color: rgba($white, 0.55);
     margin-bottom: 1rem;
     display: block;
   }
 
   h1 {
-    font-family: 'Rufina', serif;
-    font-size: 3rem;
-    font-weight: 700;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem;
+    font-weight: 400;
     color: $white;
-    line-height: 1.2;
+    line-height: 1.15;
     margin-bottom: 0.8rem;
   }
 
   .hero-sub {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 300;
-    color: rgba(255,255,255,0.82);
+    color: rgba($white, 0.65);
   }
 }
 
-.home-hero  { background-image: url('/assets/naisl-salon.jpg'); }
+.home-hero   { background-image: url('/assets/naisl-salon.jpg'); }
 .contact-hero { background-image: url('/assets/beauty-back.jpg'); }
 
 /* ============================================================
    CONTACT SECTION
    ============================================================ */
 .contact-section {
-  padding: 96px 0;
+  padding: 100px 0;
   background-color: $white;
 }
 
@@ -451,20 +508,22 @@ img { display: block; max-width: 100%; }
 
 .contact-info {
   h2 {
-    font-family: 'Rufina', serif;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: $dark;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 400;
+    color: $ink;
     margin-top: 0.4rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.4rem;
     line-height: 1.2;
   }
 }
 
+.gold-bar { display: none; }
+
 .info-list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.6rem;
 }
 
 .info-item {
@@ -472,109 +531,99 @@ img { display: block; max-width: 100%; }
   align-items: flex-start;
   gap: 1.2rem;
 
-  i { font-size: 1rem; color: $coral; margin-top: 4px; flex-shrink: 0; width: 16px; }
+  i { font-size: 0.85rem; color: $blush; margin-top: 5px; flex-shrink: 0; width: 14px; }
   div { display: flex; flex-direction: column; gap: 3px; }
 
   strong {
-    font-size: 0.7rem;
-    font-weight: 700;
+    font-size: 0.65rem;
+    font-weight: 500;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: $dark;
+    color: $stone;
   }
 
   span {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 300;
-    color: $text-light;
-    a { color: $text-light; transition: color 0.2s; &:hover { color: $coral; } }
+    color: $ink;
+    a { color: $ink; transition: color 0.2s; &:hover { color: $blush; } }
   }
 }
 
 .contact-map #map {
   height: 440px;
   width: 100%;
-  border-radius: 4px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+  border-radius: 2px;
+  box-shadow: 0 4px 32px rgba($ink, 0.07);
 }
 
 /* ============================================================
    FOOTER
    ============================================================ */
 .site-footer {
-  background-color: $dark;
-  color: rgba(255,255,255,0.6);
-  padding: 72px 0 32px;
-  position: relative;
-  overflow: hidden;
+  background-color: $ink;
+  color: rgba($white, 0.45);
+  padding: 64px 0 28px;
 }
 
-.footer-coral {
-  position: absolute;
-  top: -80px;
-  right: -80px;
-  width: 300px;
-  height: 300px;
-  background-color: $coral;
-  border-radius: 50%;
-  opacity: 0.15;
-}
+.footer-coral { display: none; }
 
 .footer-top {
   display: grid;
-  grid-template-columns: 1.8fr 1fr 1fr 1fr;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
   gap: 48px;
-  padding-bottom: 52px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  margin-bottom: 28px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba($white, 0.07);
+  margin-bottom: 24px;
 }
 
 .footer-brand {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
+  gap: 12px;
 }
 
 .footer-logo-badge {
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255,255,255,0.3);
+  border: 1px solid rgba($white, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Rufina', serif;
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
   color: $white;
   flex-shrink: 0;
 }
 
 .footer-logo-text {
-  font-family: 'Rufina', serif;
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
   color: $white;
   display: block;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.02em;
 }
 
 .footer-brand p {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 300;
-  color: rgba(255,255,255,0.4);
-  line-height: 1.6;
+  color: rgba($white, 0.32);
+  line-height: 1.65;
 }
 
 .footer-links h4,
 .footer-contact h4,
 .footer-cta h4 {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: $yellow;
+  color: rgba($white, 0.38);
   margin-bottom: 1.2rem;
 }
 
@@ -585,11 +634,11 @@ img { display: block; max-width: 100%; }
   gap: 0.6rem;
 
   a {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 300;
-    color: rgba(255,255,255,0.5);
+    color: rgba($white, 0.42);
     transition: color 0.2s;
-    &:hover { color: $yellow; }
+    &:hover { color: $white; }
   }
 }
 
@@ -597,20 +646,31 @@ img { display: block; max-width: 100%; }
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 300;
-  color: rgba(255,255,255,0.5);
+  color: rgba($white, 0.42);
   margin-bottom: 0.75rem;
 
-  i { color: $coral; font-size: 0.9rem; margin-top: 2px; flex-shrink: 0; }
+  i { color: rgba($white, 0.3); font-size: 0.82rem; margin-top: 3px; flex-shrink: 0; }
 }
 
 .footer-cta p {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 300;
-  color: rgba(255,255,255,0.45);
+  color: rgba($white, 0.38);
   margin-bottom: 1.2rem;
   line-height: 1.65;
+}
+
+/* btn-yellow in dark footer context */
+.site-footer .btn-yellow {
+  background-color: transparent;
+  border: 1px solid rgba($white, 0.22);
+  color: rgba($white, 0.65);
+  padding: 10px 22px;
+  font-size: 0.7rem;
+
+  &:hover { border-color: rgba($white, 0.5); background-color: transparent; color: $white; }
 }
 
 .footer-bottom {
@@ -619,11 +679,11 @@ img { display: block; max-width: 100%; }
   align-items: center;
 
   p, a {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 300;
-    color: rgba(255,255,255,0.3);
+    color: rgba($white, 0.22);
   }
-  a { transition: color 0.2s; &:hover { color: rgba(255,255,255,0.6); } }
+  a { transition: color 0.2s; &:hover { color: rgba($white, 0.5); } }
 }
 
 /* ============================================================
@@ -631,73 +691,53 @@ img { display: block; max-width: 100%; }
    ============================================================ */
 .booking-hero-section {
   position: relative;
-  height: 45vh;
-  min-height: 300px;
+  min-height: 44vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: $coral;
+  background-color: $sand-dark;
   overflow: hidden;
-  padding-top: 80px;
-
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: -60px;
-    left: -60px;
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.08);
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: -40px;
-    right: 10%;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.06);
-  }
+  padding-top: 76px;
 
   .hero-content {
     position: relative;
     z-index: 2;
 
-    .hero-eyebrow { color: rgba(255,255,255,0.7); }
+    .hero-eyebrow { color: $stone; }
 
-    h1 { color: $white; font-size: 2.8rem; }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 400;
+      color: $ink;
+    }
   }
 }
 
 .booking-section {
-  padding: 80px 0 96px;
-  background-color: $cream;
+  padding: 72px 0 100px;
+  background-color: $sand;
 }
 
 .booking-wrapper {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 40px;
-  align-items: start;
+  display: flex;
+  justify-content: center;
 }
 
 .booking-sidebar {
   background-color: $white;
-  border-radius: 4px;
-  padding: 36px 28px;
+  border-radius: 2px;
+  padding: 32px 24px;
   position: sticky;
   top: 100px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 20px rgba($ink, 0.05);
 
   h3 {
-    font-family: 'Rufina', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 1.2rem;
-    font-weight: 700;
-    color: $dark;
+    font-weight: 400;
+    color: $ink;
     margin-bottom: 1.4rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid $border;
@@ -706,7 +746,7 @@ img { display: block; max-width: 100%; }
 
 .service-price-list {
   list-style: none;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.6rem;
 
   li {
     display: flex;
@@ -714,39 +754,39 @@ img { display: block; max-width: 100%; }
     align-items: center;
     padding: 10px 0;
     border-bottom: 1px solid $border;
-    font-size: 0.88rem;
+    font-size: 0.85rem;
     &:last-child { border-bottom: none; }
 
-    .spl-name { color: $text; font-weight: 300; }
-    .spl-price { font-weight: 700; color: $coral; }
+    .spl-name { color: $stone; font-weight: 300; }
+    .spl-price { font-weight: 500; color: $ink; }
   }
 }
 
 .booking-note {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 300;
-  color: $text-light;
+  color: $stone;
   display: flex;
   align-items: center;
   gap: 8px;
 
-  i { color: $coral; }
+  i { color: $blush; }
 }
 
 .booking-form-wrapper {
   background-color: $white;
-  border-radius: 4px;
+  border-radius: 2px;
   padding: 44px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 20px rgba($ink, 0.05);
 }
 
 .form-section-title {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: $text-light;
+  color: $stone;
   margin: 2rem 0 1.2rem;
   padding-bottom: 0.6rem;
   border-bottom: 1px solid $border;
@@ -758,11 +798,11 @@ img { display: block; max-width: 100%; }
 
   label {
     display: block;
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-size: 0.7rem;
+    font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: $text-light;
+    color: $stone;
     margin-bottom: 6px;
   }
 }
@@ -775,19 +815,19 @@ img { display: block; max-width: 100%; }
 
 .form-control {
   width: 100%;
-  padding: 12px 16px;
-  border: 1.5px solid $border;
-  border-radius: 30px;
-  font-family: 'Lato', sans-serif;
-  font-size: 0.92rem;
+  padding: 11px 14px;
+  border: 1px solid $border;
+  border-radius: 2px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
   font-weight: 300;
-  color: $text;
+  color: $ink;
   background-color: $white;
   appearance: auto;
   transition: border-color 0.2s;
 
-  &:focus { outline: none; border-color: $coral; }
-  &:disabled { background-color: $cream; color: $text-light; cursor: not-allowed; }
+  &:focus { outline: none; border-color: $ink; }
+  &:disabled { background-color: $sand; color: $stone; cursor: not-allowed; }
 }
 
 .price-display {
@@ -798,22 +838,22 @@ img { display: block; max-width: 100%; }
     align-items: center;
     gap: 6px;
     font-size: 0.85rem;
-    font-weight: 700;
-    color: $coral;
+    font-weight: 500;
+    color: $blush;
   }
 }
 
 .form-errors {
-  background-color: #fdf0f0;
-  border: 1px solid #f0c0c0;
-  border-radius: 8px;
+  background-color: #fdf0ee;
+  border: 1px solid #e0b8b0;
+  border-radius: 2px;
   padding: 16px 20px;
   margin-bottom: 1.5rem;
 
   p {
     font-size: 0.85rem;
     font-weight: 300;
-    color: #c0392b;
+    color: $blush-dark;
     margin-bottom: 4px;
     display: flex;
     align-items: center;
@@ -832,39 +872,41 @@ img { display: block; max-width: 100%; }
 
 .btn-booking {
   display: inline-block;
-  padding: 14px 40px;
-  background-color: $yellow;
-  color: $dark;
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  padding: 13px 36px;
+  background-color: $ink;
+  color: $white;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   border: none;
-  border-radius: 30px;
+  border-radius: 2px;
   cursor: pointer;
-  transition: background-color 0.25s;
-
-  &:hover { background-color: $yellow-dark; }
+  transition: background-color 0.22s;
+  &:hover { background-color: $blush; }
+  &:active { transform: scale(0.99); }
 }
 
 .submit-note {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 300;
-  color: $text-light;
+  color: $stone;
   display: flex;
   align-items: center;
   gap: 6px;
 
-  i { color: $coral; }
+  i { color: $blush; }
 }
 
-/* SUCCESS / CANCEL */
+/* ============================================================
+   SUCCESS / CANCEL
+   ============================================================ */
 .result-page {
   min-height: 80vh;
   display: flex;
   align-items: center;
-  background-color: $cream;
+  background-color: $sand;
   padding-top: 88px;
 }
 
@@ -874,34 +916,34 @@ img { display: block; max-width: 100%; }
   width: 100%;
 
   h1 {
-    font-family: 'Rufina', serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 3rem;
-    font-weight: 700;
-    color: $dark;
+    font-weight: 400;
+    color: $ink;
     margin: 1.2rem 0 1rem;
   }
 }
 
 .result-icon {
-  width: 76px;
-  height: 76px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   margin: 0 auto;
   i { color: $white; }
 }
 
-.success-icon { background-color: #6aaa7a; }
-.cancel-icon  { background-color: $coral; }
+.success-icon { background-color: #7BAE8A; }
+.cancel-icon  { background-color: $blush; }
 
 .result-sub {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 300;
-  color: $text-light;
-  line-height: 1.8;
+  color: $stone;
+  line-height: 1.85;
   max-width: 500px;
   margin: 0 auto 0.6rem;
 }
@@ -916,15 +958,15 @@ img { display: block; max-width: 100%; }
 
 .btn-ghost {
   display: inline-block;
-  padding: 13px 30px;
-  border: 1.5px solid $border;
-  color: $text-light;
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  padding: 12px 28px;
+  border: 1px solid $border;
+  color: $stone;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  border-radius: 30px;
-  transition: border-color 0.2s, color 0.2s;
-  &:hover { border-color: $dark; color: $dark; }
+  border-radius: 2px;
+  transition: border-color 0.22s, color 0.22s;
+  &:hover { border-color: $ink; color: $ink; }
 }

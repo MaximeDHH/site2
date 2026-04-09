@@ -1,0 +1,103 @@
+<div class="admin-page-header">
+  <div>
+    <h1>Réservations</h1>
+    <p class="admin-page-sub">Gérez les rendez-vous de Royal Nail</p>
+  </div>
+</div>
+
+<div class="admin-stats">
+  <div class="admin-stat">
+    <span class="admin-stat-value"><%= @counts[:total] %></span>
+    <span class="admin-stat-label">Total</span>
+  </div>
+  <div class="admin-stat admin-stat--pending">
+    <span class="admin-stat-value"><%= @counts[:pending] %></span>
+    <span class="admin-stat-label">En attente</span>
+  </div>
+  <div class="admin-stat admin-stat--confirmed">
+    <span class="admin-stat-value"><%= @counts[:confirmed] %></span>
+    <span class="admin-stat-label">Confirmées</span>
+  </div>
+  <div class="admin-stat admin-stat--cancelled">
+    <span class="admin-stat-value"><%= @counts[:cancelled] %></span>
+    <span class="admin-stat-label">Annulées</span>
+  </div>
+</div>
+
+<div class="admin-filters">
+  <%= form_with url: admin_bookings_path, method: :get, local: true, class: "admin-filter-form" do |f| %>
+    <div class="admin-filter-group">
+      <label>Statut</label>
+      <%= f.select :status,
+            [['Tous', ''], ['En attente', 'pending'], ['Confirmée', 'confirmed'], ['Annulée', 'cancelled']],
+            { selected: params[:status] },
+            class: 'admin-select' %>
+    </div>
+    <div class="admin-filter-group">
+      <label>Date</label>
+      <%= f.date_field :date, value: params[:date], class: 'admin-input' %>
+    </div>
+    <%= f.submit 'Filtrer', class: 'admin-btn admin-btn--primary' %>
+    <% if params[:status].present? || params[:date].present? %>
+      <%= link_to 'Réinitialiser', admin_bookings_path, class: 'admin-btn admin-btn--ghost' %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="admin-card">
+  <% if @bookings.any? %>
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Client</th>
+          <th>Service</th>
+          <th>Date</th>
+          <th>Créneau</th>
+          <th>Montant</th>
+          <th>Statut</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @bookings.each do |booking| %>
+          <tr>
+            <td class="admin-id"><%= booking.id %></td>
+            <td>
+              <div class="admin-client-name"><%= booking.name %></div>
+              <div class="admin-client-email"><%= booking.email %></div>
+            </td>
+            <td><%= booking.service %></td>
+            <td><%= booking.date.strftime('%d/%m/%Y') %></td>
+            <td><%= booking.time_slot %></td>
+            <td><%= number_to_currency(booking.price_euros, unit: '€', format: '%n %u') %></td>
+            <td>
+              <span class="admin-badge admin-badge--<%= booking.status %>">
+                <%= { 'pending' => 'En attente', 'confirmed' => 'Confirmée', 'cancelled' => 'Annulée' }[booking.status] %>
+              </span>
+            </td>
+            <td class="admin-actions">
+              <%= link_to admin_booking_path(booking), class: 'admin-action-btn' do %>
+                <i class="fa-solid fa-eye"></i>
+              <% end %>
+              <% if booking.status == 'pending' %>
+                <%= button_to confirm_admin_booking_path(booking), method: :patch, class: 'admin-action-btn admin-action-btn--confirm', title: 'Confirmer', form: { data: { turbo: false } } do %>
+                  <i class="fa-solid fa-check"></i>
+                <% end %>
+                <%= button_to cancel_admin_booking_path(booking), method: :patch, class: 'admin-action-btn admin-action-btn--cancel', title: 'Annuler',
+                      data: { confirm: 'Annuler cette réservation ?' }, form: { data: { turbo: false } } do %>
+                  <i class="fa-solid fa-xmark"></i>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="admin-empty">
+      <i class="fa-regular fa-calendar-xmark"></i>
+      <p>Aucune réservation trouvée.</p>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,61 @@
+<div class="admin-page-header">
+  <div>
+    <%= link_to admin_bookings_path, class: 'admin-back-link' do %>
+      <i class="fa-solid fa-arrow-left"></i> Retour
+    <% end %>
+    <h1>Réservation #<%= @booking.id %></h1>
+  </div>
+  <div class="admin-page-actions">
+    <% if @booking.status == 'pending' %>
+      <%= button_to 'Confirmer', confirm_admin_booking_path(@booking), method: :patch,
+            class: 'admin-btn admin-btn--confirm', form: { data: { turbo: false } } %>
+      <%= button_to 'Annuler', cancel_admin_booking_path(@booking), method: :patch,
+            class: 'admin-btn admin-btn--cancel',
+            data: { confirm: 'Annuler cette réservation ?' }, form: { data: { turbo: false } } %>
+    <% end %>
+  </div>
+</div>
+
+<div class="admin-detail-grid">
+  <div class="admin-card">
+    <h2 class="admin-card-title"><i class="fa-solid fa-user"></i> Client</h2>
+    <dl class="admin-dl">
+      <dt>Nom</dt>
+      <dd><%= @booking.name %></dd>
+      <dt>Email</dt>
+      <dd><a href="mailto:<%= @booking.email %>"><%= @booking.email %></a></dd>
+      <dt>Téléphone</dt>
+      <dd><% if @booking.phone.present? %><a href="tel:<%= @booking.phone %>"><%= @booking.phone %></a><% else %>—<% end %></dd>
+    </dl>
+  </div>
+
+  <div class="admin-card">
+    <h2 class="admin-card-title"><i class="fa-solid fa-calendar-check"></i> Rendez-vous</h2>
+    <dl class="admin-dl">
+      <dt>Service</dt>
+      <dd><%= @booking.service %></dd>
+      <dt>Date</dt>
+      <dd><%= @booking.date.strftime('%A %d %B %Y').capitalize %></dd>
+      <dt>Créneau</dt>
+      <dd><%= @booking.time_slot %></dd>
+      <dt>Montant</dt>
+      <dd><strong><%= number_to_currency(@booking.price_euros, unit: '€', format: '%n %u') %></strong></dd>
+    </dl>
+  </div>
+
+  <div class="admin-card">
+    <h2 class="admin-card-title"><i class="fa-solid fa-circle-info"></i> Statut & Paiement</h2>
+    <dl class="admin-dl">
+      <dt>Statut</dt>
+      <dd>
+        <span class="admin-badge admin-badge--<%= @booking.status %>">
+          <%= { 'pending' => 'En attente', 'confirmed' => 'Confirmée', 'cancelled' => 'Annulée' }[@booking.status] %>
+        </span>
+      </dd>
+      <dt>Session Stripe</dt>
+      <dd class="admin-mono"><%= @booking.stripe_session_id.presence || '—' %></dd>
+      <dt>Créée le</dt>
+      <dd><%= @booking.created_at.strftime('%d/%m/%Y à %H:%M') %></dd>
+    </dl>
+  </div>
+</div>

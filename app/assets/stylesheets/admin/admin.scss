@@ -1,0 +1,464 @@
+// ============================================================
+//   ADMIN — Royal Nail Back-office
+// ============================================================
+
+$coral:      #e8391d;
+$yellow:     #f0c040;
+$cream:      #faf8f4;
+$white:      #ffffff;
+$dark:       #1a1a1a;
+$text:       #3a3a3a;
+$text-light: #888888;
+$border:     #e8e0d8;
+$sidebar-bg: #1a1a1a;
+$sidebar-w:  220px;
+
+$green:  #2e7d32;
+$green-bg: #e8f5e9;
+$orange: #e65100;
+$orange-bg: #fff3e0;
+$red:    #c62828;
+$red-bg: #ffebee;
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body.admin-body {
+  font-family: 'Lato', sans-serif;
+  background: #f2ede8;
+  color: $text;
+  display: flex;
+  min-height: 100vh;
+}
+
+// ── Sidebar ──────────────────────────────────────────────────
+
+.admin-sidebar {
+  width: $sidebar-w;
+  background: $sidebar-bg;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  z-index: 100;
+}
+
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.admin-logo-badge {
+  width: 38px; height: 38px;
+  background: $coral;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Rufina', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.admin-logo-name {
+  display: block;
+  font-family: 'Rufina', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.admin-logo-sub {
+  display: block;
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.admin-nav {
+  flex: 1;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.admin-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.88rem;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+
+  i { width: 16px; text-align: center; }
+
+  &:hover { background: rgba(255,255,255,0.08); color: #fff; }
+  &.active { background: $coral; color: #fff; }
+}
+
+.admin-sidebar-footer {
+  padding: 12px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+// ── Main ─────────────────────────────────────────────────────
+
+.admin-main {
+  margin-left: $sidebar-w;
+  flex: 1;
+  padding: 32px;
+  max-width: 1100px;
+}
+
+// ── Flash ─────────────────────────────────────────────────────
+
+.admin-flash {
+  padding: 12px 18px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+
+  &--notice {
+    background: $green-bg;
+    color: $green;
+    border: 1px solid darken($green-bg, 8%);
+  }
+}
+
+// ── Page header ───────────────────────────────────────────────
+
+.admin-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 28px;
+
+  h1 {
+    font-family: 'Rufina', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: $dark;
+    line-height: 1.2;
+  }
+}
+
+.admin-page-sub {
+  color: $text-light;
+  font-size: 0.88rem;
+  margin-top: 2px;
+}
+
+.admin-page-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.admin-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: $text-light;
+  font-size: 0.83rem;
+  margin-bottom: 6px;
+  text-decoration: none;
+
+  &:hover { color: $coral; }
+}
+
+// ── Stats ─────────────────────────────────────────────────────
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.admin-stat {
+  background: $white;
+  border-radius: 12px;
+  padding: 20px 22px;
+  border: 1px solid $border;
+}
+
+.admin-stat-value {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'Rufina', serif;
+  color: $dark;
+  line-height: 1;
+}
+
+.admin-stat-label {
+  display: block;
+  font-size: 0.75rem;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: $text-light;
+  margin-top: 4px;
+}
+
+.admin-stat--pending   .admin-stat-value { color: $orange; }
+.admin-stat--confirmed .admin-stat-value { color: $green; }
+.admin-stat--cancelled .admin-stat-value { color: $red; }
+
+// ── Filters ───────────────────────────────────────────────────
+
+.admin-filters {
+  margin-bottom: 20px;
+}
+
+.admin-filter-form {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.admin-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  label {
+    font-size: 0.75rem;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: $text-light;
+  }
+}
+
+.admin-select,
+.admin-input {
+  padding: 8px 12px;
+  border: 1px solid $border;
+  border-radius: 8px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.88rem;
+  color: $text;
+  background: $white;
+  outline: none;
+
+  &:focus { border-color: $coral; }
+}
+
+// ── Buttons ───────────────────────────────────────────────────
+
+.admin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: background 0.15s, opacity 0.15s;
+
+  &--primary {
+    background: $coral;
+    color: #fff;
+    &:hover { background: darken($coral, 8%); }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $text-light;
+    border: 1px solid $border;
+    &:hover { background: $cream; color: $text; }
+  }
+
+  &--confirm {
+    background: $green-bg;
+    color: $green;
+    border: 1px solid darken($green-bg, 10%);
+    &:hover { background: darken($green-bg, 6%); }
+  }
+
+  &--cancel {
+    background: $red-bg;
+    color: $red;
+    border: 1px solid darken($red-bg, 10%);
+    &:hover { background: darken($red-bg, 6%); }
+  }
+}
+
+// ── Card ──────────────────────────────────────────────────────
+
+.admin-card {
+  background: $white;
+  border-radius: 12px;
+  border: 1px solid $border;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.admin-card-title {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: $text-light;
+  padding: 18px 22px 0;
+  margin-bottom: 12px;
+
+  i { margin-right: 6px; color: $coral; }
+}
+
+// ── Table ─────────────────────────────────────────────────────
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+
+  th {
+    text-align: left;
+    padding: 12px 16px;
+    background: #faf8f4;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: $text-light;
+    border-bottom: 1px solid $border;
+  }
+
+  td {
+    padding: 13px 16px;
+    border-bottom: 1px solid $border;
+    vertical-align: middle;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #faf9f7; }
+}
+
+.admin-id { color: $text-light; font-size: 0.8rem; }
+.admin-client-name { font-weight: 600; }
+.admin-client-email { font-size: 0.8rem; color: $text-light; }
+
+// ── Badges ────────────────────────────────────────────────────
+
+.admin-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+
+  &--pending   { background: $orange-bg; color: $orange; }
+  &--confirmed { background: $green-bg;  color: $green; }
+  &--cancelled { background: $red-bg;    color: $red; }
+}
+
+// ── Action buttons in table ───────────────────────────────────
+
+.admin-actions {
+  display: flex;
+  gap: 6px;
+
+  form { display: inline; }
+}
+
+.admin-action-btn {
+  width: 30px; height: 30px;
+  border-radius: 6px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border: 1px solid $border;
+  background: $white;
+  color: $text-light;
+  text-decoration: none;
+  transition: background 0.12s, color 0.12s;
+
+  &:hover { background: $cream; color: $text; }
+
+  &--confirm {
+    border-color: darken($green-bg, 10%);
+    color: $green;
+    background: $green-bg;
+    &:hover { background: darken($green-bg, 8%); }
+  }
+
+  &--cancel {
+    border-color: darken($red-bg, 10%);
+    color: $red;
+    background: $red-bg;
+    &:hover { background: darken($red-bg, 8%); }
+  }
+}
+
+// ── Empty state ───────────────────────────────────────────────
+
+.admin-empty {
+  padding: 48px;
+  text-align: center;
+  color: $text-light;
+
+  i { font-size: 2.5rem; margin-bottom: 12px; display: block; opacity: 0.4; }
+  p { font-size: 0.9rem; }
+}
+
+// ── Detail page ───────────────────────────────────────────────
+
+.admin-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.admin-dl {
+  padding: 0 22px 18px;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 6px 16px;
+  font-size: 0.88rem;
+
+  dt {
+    color: $text-light;
+    font-size: 0.8rem;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+  }
+
+  dd {
+    color: $text;
+    a { color: $coral; }
+  }
+}
+
+.admin-mono {
+  font-family: monospace;
+  font-size: 0.78rem;
+  word-break: break-all;
+  color: $text-light;
+}

@@ -8,5 +8,15 @@ Rails.application.routes.draw do
   get  '/booking/slots',   to: 'bookings#slots',   as: :booking_slots
   post '/webhooks/stripe', to: 'bookings#webhook'
 
+  namespace :admin do
+    root 'bookings#index'
+    resources :bookings, only: [:index, :show] do
+      member do
+        patch :confirm
+        patch :cancel
+      end
+    end
+  end
+
   get "up" => "rails/health#show", as: :rails_health_check
 end

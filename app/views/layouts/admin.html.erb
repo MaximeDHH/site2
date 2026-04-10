@@ -16,15 +16,24 @@
         <div class="admin-logo-badge">R</div>
         <div>
           <span class="admin-logo-name">Royal Nail</span>
-          <span class="admin-logo-sub">Back-office</span>
+          <span class="admin-logo-sub">Administration</span>
         </div>
       </div>
       <nav class="admin-nav">
         <%= link_to admin_root_path, class: "admin-nav-item #{'active' if controller_name == 'bookings'}" do %>
           <i class="fa-solid fa-calendar-check"></i> Réservations
         <% end %>
+        <%= link_to admin_stats_path, class: "admin-nav-item #{'active' if controller_name == 'stats'}" do %>
+          <i class="fa-solid fa-chart-bar"></i> Statistiques
+        <% end %>
       </nav>
       <div class="admin-sidebar-footer">
+        <% shop_closed = Admin::ShopController.closure&.then { |c| Date.today.between?(c[:from], c[:to]) } %>
+        <%= link_to admin_shop_path,
+              class: "admin-shop-toggle #{'admin-shop-toggle--closed' if shop_closed}" do %>
+          <i class="fa-solid <%= shop_closed ? 'fa-door-open' : 'fa-door-closed' %>"></i>
+          <%= shop_closed ? 'Salon fermé' : 'Fermeture salon' %>
+        <% end %>
         <a href="/" class="admin-nav-item">
           <i class="fa-solid fa-arrow-left"></i> Voir le site
         </a>

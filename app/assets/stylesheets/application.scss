@@ -118,6 +118,8 @@ img { display: block; max-width: 100%; }
 /* ============================================================
    HEADER
    ============================================================ */
+body.shop-closed .site-header { top: 44px; }
+
 .site-header {
   position: fixed;
   top: 0;
@@ -550,11 +552,86 @@ details[open] .accordion-header {
   }
 }
 
-.contact-map #map {
-  height: 440px;
+.contact-map {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.google-map {
+  height: 400px;
   width: 100%;
+  border: 0;
   border-radius: 2px;
   box-shadow: 0 4px 32px rgba($ink, 0.07);
+}
+
+.metro-badge {
+  background: $sand;
+  border: 1px solid $border;
+  border-radius: 2px;
+  padding: 0.75rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.metro-badge-title {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $stone;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.metro-tags {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.metro-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  color: $white;
+  white-space: nowrap;
+
+  &--13 { background: #6EC4E8; }
+  &--12 { background: #007852; }
+  &--bus { background: #82C8E6; }
+}
+
+/* ============================================================
+   SHOP CLOSED BANNER
+   ============================================================ */
+.shop-closed-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: $ink;
+  color: rgba($white, 0.88);
+  text-align: center;
+  padding: 12px 24px;
+  font-size: 0.82rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  i { color: $blush; font-size: 0.9rem; }
 }
 
 /* ============================================================

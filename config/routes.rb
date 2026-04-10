@@ -10,6 +10,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'bookings#index'
+    get  '/stats', to: 'stats#index', as: :stats
+    get  '/shop',        to: 'shop#show',   as: :shop
+    patch '/shop',       to: 'shop#update'
+    post '/shop/cancel', to: 'shop#cancel', as: :shop_cancel
     resources :bookings, only: [:index, :show] do
       member do
         patch :confirm

@@ -1,0 +1,65 @@
+<div class="admin-page-header">
+  <div>
+    <h1>Fermeture du salon</h1>
+    <p class="admin-page-sub">Affichez un bandeau d'information sur le site pendant une période de fermeture</p>
+  </div>
+</div>
+
+<% if @closure %>
+  <div class="admin-flash admin-flash--warning">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    Le salon est marqué comme fermé
+    du <strong><%= I18n.l(@closure[:from], format: :long) %></strong>
+    au <strong><%= I18n.l(@closure[:to], format: :long) %></strong>.
+    Le bandeau est actuellement <%= Date.today.between?(@closure[:from], @closure[:to]) ? 'visible' : 'programmé' %> sur le site.
+  </div>
+<% end %>
+
+<div class="admin-card" style="max-width: 520px;">
+  <div style="padding: 1.8rem 2rem;">
+    <h3 class="stats-card-title" style="padding: 0; margin-bottom: 1.4rem;">
+      <%= @closure ? 'Modifier la période' : 'Programmer une fermeture' %>
+    </h3>
+
+    <%= form_with url: admin_shop_path, method: :patch, local: true, id: 'closure-form' do |f| %>
+      <div class="shop-date-grid">
+        <div class="admin-filter-group">
+          <label for="from">Date de début</label>
+          <input type="date" id="from" name="from"
+                 value="<%= @closure&.dig(:from)&.iso8601 || Date.today.iso8601 %>"
+                 min="<%= Date.today.iso8601 %>"
+                 class="admin-input" required>
+        </div>
+        <div class="admin-filter-group">
+          <label for="to">Date de fin</label>
+          <input type="date" id="to" name="to"
+                 value="<%= @closure&.dig(:to)&.iso8601 || Date.today.iso8601 %>"
+                 min="<%= Date.today.iso8601 %>"
+                 class="admin-input" required>
+        </div>
+      </div>
+    <% end %>
+
+    <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1.4rem;">
+      <%= button_tag @closure ? 'Mettre à jour' : 'Activer la fermeture',
+            type: 'submit',
+            form: 'closure-form',
+            class: 'admin-btn admin-btn--primary' %>
+
+      <% if @closure %>
+        <%= button_to 'Annuler la fermeture', admin_shop_cancel_path,
+              method: :post,
+              class: 'admin-btn admin-btn--ghost',
+              form: { data: { turbo: false } } %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="shop-preview">
+  <p class="shop-preview-label">Aperçu du bandeau</p>
+  <div class="shop-closed-banner shop-closed-banner--preview">
+    <i class="fa-solid fa-circle-exclamation"></i>
+    Le salon est actuellement fermé. Nous vous accueillons bientôt — retrouvez nos horaires en bas de page.
+  </div>
+</div>

@@ -1,0 +1,103 @@
+<div class="admin-page-header">
+  <div>
+    <h1>Statistiques</h1>
+    <p class="admin-page-sub">Vue d'ensemble de l'activité Royal Nail</p>
+  </div>
+</div>
+
+<%# KPI row %>
+<div class="stats-kpi-grid">
+  <div class="stats-kpi">
+    <span class="stats-kpi-label">CA total</span>
+    <span class="stats-kpi-value"><%= number_to_currency(@ca_total, unit: '€', format: '%n %u') %></span>
+    <span class="stats-kpi-sub">réservations confirmées</span>
+  </div>
+  <div class="stats-kpi">
+    <span class="stats-kpi-label">CA ce mois</span>
+    <span class="stats-kpi-value"><%= number_to_currency(@ca_month, unit: '€', format: '%n %u') %></span>
+    <span class="stats-kpi-sub"><%= Date.today.strftime('%B %Y') %></span>
+  </div>
+  <div class="stats-kpi">
+    <span class="stats-kpi-label">CA cette semaine</span>
+    <span class="stats-kpi-value"><%= number_to_currency(@ca_week, unit: '€', format: '%n %u') %></span>
+    <span class="stats-kpi-sub">lun — dim</span>
+  </div>
+  <div class="stats-kpi">
+    <span class="stats-kpi-label">Taux de confirmation</span>
+    <span class="stats-kpi-value"><%= @taux_confirmation %> %</span>
+    <span class="stats-kpi-sub">sur toutes les réservations</span>
+  </div>
+</div>
+
+<div class="stats-grid">
+
+  <%# Prochain RDV %>
+  <div class="admin-card stats-card">
+    <h3 class="stats-card-title">Prochain rendez-vous</h3>
+    <% if @next_booking %>
+      <div class="stats-next-booking">
+        <div class="stats-next-date">
+          <span class="stats-next-day"><%= @next_booking.date.strftime('%d') %></span>
+          <span class="stats-next-month"><%= @next_booking.date.strftime('%b %Y') %></span>
+        </div>
+        <div class="stats-next-info">
+          <strong><%= @next_booking.name %></strong>
+          <span><%= @next_booking.time_slot %> · <%= @next_booking.service %></span>
+          <span class="admin-badge admin-badge--<%= @next_booking.status %>">
+            <%= { 'pending' => 'En attente', 'confirmed' => 'Confirmée' }[@next_booking.status] %>
+          </span>
+        </div>
+      </div>
+    <% else %>
+      <p class="stats-empty">Aucun rendez-vous à venir.</p>
+    <% end %>
+  </div>
+
+  <%# Top services %>
+  <div class="admin-card stats-card">
+    <h3 class="stats-card-title">Top prestations</h3>
+    <% if @top_services.any? %>
+      <% max = @top_services.first[1].to_f %>
+      <div class="stats-top-services">
+        <% @top_services.each_with_index do |(service, count), i| %>
+          <div class="stats-service-row">
+            <span class="stats-service-rank"><%= i + 1 %></span>
+            <div class="stats-service-bar-wrap">
+              <span class="stats-service-name"><%= service %></span>
+              <div class="stats-service-bar">
+                <div class="stats-service-bar-fill" style="width: <%= (count / max * 100).round %>%"></div>
+              </div>
+            </div>
+            <span class="stats-service-count"><%= count %></span>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="stats-empty">Pas encore de données.</p>
+    <% end %>
+  </div>
+
+</div>
+
+<%# Tableau 6 derniers mois %>
+<div class="admin-card" style="margin-top: 2rem;">
+  <h3 class="stats-card-title" style="padding: 1.5rem 1.5rem 0;">Activité mensuelle — 6 derniers mois</h3>
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Mois</th>
+        <th>Réservations</th>
+        <th>CA confirmé</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @monthly.each do |m| %>
+        <tr>
+          <td><%= m[:label] %></td>
+          <td><%= m[:count] %></td>
+          <td><%= number_to_currency(m[:ca], unit: '€', format: '%n %u') %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -45,21 +45,24 @@
       </div>
 
       <div class="contact-map">
-        <div id="map"></div>
+        <iframe
+          class="google-map"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://maps.google.com/maps?q=64%20rue%20Brancion%2C%2075015%20Paris&t=&z=16&ie=UTF8&iwloc=&output=embed">
+        </iframe>
+
+        <div class="metro-badge">
+          <p class="metro-badge-title">Accès en transports</p>
+          <div class="metro-tags">
+            <span class="metro-tag metro-tag--13">13 · Porte de Vanves</span>
+            <span class="metro-tag metro-tag--12">12 · Convention</span>
+            <span class="metro-tag metro-tag--bus">Bus 89 · 95</span>
+          </div>
+        </div>
       </div>
 
     </div>
   </div>
 </section>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var map = L.map('map').setView([47.75847930119338, -3.370361642863164], 15);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-    L.marker([47.75847930119338, -3.370361642863164]).addTo(map)
-      .bindPopup('<strong>Royal Nail</strong><br>Salon de manucure à Lorient')
-      .openPopup();
-  });
-</script>

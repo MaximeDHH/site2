@@ -14,20 +14,14 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <!-- Leaflet CSS -->
-    <%= stylesheet_link_tag 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', media: 'all' %>
-
-    <!-- Application CSS (make sure it's after external links) -->
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-
-
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Application CSS -->
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
 
   </head>
 
-  <body>
+  <% _closure = Admin::ShopController.closure %>
+  <body class="<%= 'shop-closed' if _closure && Date.today.between?(_closure[:from], _closure[:to]) %>">
     <%= render 'shared/header' %>
     <%= yield %>
     <%= render 'shared/footer' %>

@@ -110,6 +110,37 @@ body.admin-body {
 .admin-sidebar-footer {
   padding: 12px;
   border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.admin-shop-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  text-align: left;
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.6);
+  transition: background 0.15s, color 0.15s;
+
+  i { width: 16px; text-align: center; }
+
+  &:hover { background: rgba(255,255,255,0.12); color: #fff; }
+
+  &--closed {
+    background: rgba(232, 57, 29, 0.2);
+    color: #ff9a8b;
+    &:hover { background: rgba(232, 57, 29, 0.3); }
+  }
 }
 
 // ── Main ─────────────────────────────────────────────────────
@@ -133,6 +164,12 @@ body.admin-body {
     background: $green-bg;
     color: $green;
     border: 1px solid darken($green-bg, 8%);
+  }
+
+  &--warning {
+    background: $orange-bg;
+    color: $orange;
+    border: 1px solid darken($orange-bg, 8%);
   }
 }
 
@@ -424,6 +461,205 @@ body.admin-body {
 
   i { font-size: 2.5rem; margin-bottom: 12px; display: block; opacity: 0.4; }
   p { font-size: 0.9rem; }
+}
+
+// ── Shop closure page ─────────────────────────────────────────
+
+.shop-date-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.shop-preview {
+  margin-top: 2rem;
+  max-width: 520px;
+}
+
+.shop-preview-label {
+  font-size: 0.72rem;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: $text-light;
+  margin-bottom: 8px;
+}
+
+.shop-closed-banner--preview {
+  position: static;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+// ── Stats page ───────────────────────────────────────────────
+
+.stats-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stats-kpi {
+  background: $white;
+  border-radius: 12px;
+  border: 1px solid $border;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stats-kpi-label {
+  font-size: 0.72rem;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: $text-light;
+}
+
+.stats-kpi-value {
+  font-family: 'Rufina', serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: $dark;
+  line-height: 1.1;
+}
+
+.stats-kpi-sub {
+  font-size: 0.75rem;
+  color: $text-light;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.stats-card { margin-bottom: 0 !important; }
+
+.stats-card-title {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: $text-light;
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid $border;
+}
+
+.stats-next-booking {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.stats-next-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: $coral;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 16px;
+  min-width: 56px;
+  flex-shrink: 0;
+}
+
+.stats-next-day {
+  font-family: 'Rufina', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stats-next-month {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+
+.stats-next-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  strong { font-size: 0.95rem; font-weight: 600; color: $dark; }
+  span   { font-size: 0.82rem; color: $text-light; }
+}
+
+.stats-empty {
+  padding: 24px 20px;
+  font-size: 0.88rem;
+  color: $text-light;
+}
+
+.stats-top-services {
+  padding: 14px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stats-service-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stats-service-rank {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: $text-light;
+  width: 14px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.stats-service-bar-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stats-service-name {
+  font-size: 0.82rem;
+  color: $text;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stats-service-bar {
+  height: 4px;
+  background: $border;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.stats-service-bar-fill {
+  height: 100%;
+  background: $coral;
+  border-radius: 2px;
+}
+
+.stats-service-count {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: $text-light;
+  width: 20px;
+  text-align: right;
+  flex-shrink: 0;
 }
 
 // ── Detail page ───────────────────────────────────────────────

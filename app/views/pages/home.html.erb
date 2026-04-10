@@ -1,3 +1,14 @@
+<% if @shop_closed %>
+  <div class="shop-closed-banner">
+    <i class="fa-solid fa-circle-exclamation"></i>
+    <% if @shop_closure[:from] == @shop_closure[:to] %>
+      Le salon est fermé le <%= I18n.l(@shop_closure[:from], format: :long) %>. Nous vous accueillons dès le lendemain.
+    <% else %>
+      Le salon est fermé du <%= I18n.l(@shop_closure[:from], format: :long) %> au <%= I18n.l(@shop_closure[:to], format: :long) %>. À très bientôt !
+    <% end %>
+  </div>
+<% end %>
+
 <!-- HERO SPLIT -->
 <section class="hero-split">
   <div class="hero-left">

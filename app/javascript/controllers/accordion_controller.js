@@ -1,22 +1,19 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["header", "body"]
+  static targets = ["item"]
 
   toggle(event) {
-    const header = event.currentTarget
-    const index  = this.headerTargets.indexOf(header)
-    const body   = this.bodyTargets[index]
-    const isOpen = header.classList.contains("is-open")
+    event.preventDefault()
+    const details = event.currentTarget.closest("details")
+    const isOpen = details.hasAttribute("open")
 
-    // ferme tout
-    this.headerTargets.forEach(h => h.classList.remove("is-open"))
-    this.bodyTargets.forEach(b => b.classList.remove("is-open"))
+    // Ferme tous les items
+    this.itemTargets.forEach(item => item.removeAttribute("open"))
 
-    // ouvre celui cliqué (sauf s'il était déjà ouvert)
+    // Ouvre celui cliqué (sauf s'il était déjà ouvert)
     if (!isOpen) {
-      header.classList.add("is-open")
-      body.classList.add("is-open")
+      details.setAttribute("open", "")
     }
   }
 }

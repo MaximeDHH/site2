@@ -22,7 +22,7 @@
     </div>
   </div>
   <div class="hero-right">
-    <%= image_tag 'pexels-cottonbro-5871914.jpg', alt: 'Royal Nail', class: 'hero-img' %>
+    <%= image_tag 'hands-holding.jpg', alt: 'Royal Nail', class: 'hero-img' %>
   </div>
 </section>
 
@@ -33,11 +33,11 @@
       <p class="section-eyebrow">Ce que nous proposons</p>
       <h2>Nos prestations</h2>
     </div>
-    <div class="accordion">
+    <div class="accordion" data-controller="accordion">
 
       <%# ── MANUCURE ── %>
-      <details class="accordion-item">
-        <summary class="accordion-header">
+      <details class="accordion-item" data-accordion-target="item">
+        <summary class="accordion-header" data-action="click->accordion#toggle">
           <span class="accordion-title">Manucure</span>
           <span class="accordion-meta">20 prestations — dès 10 €</span>
           <span class="accordion-chevron"></span>
@@ -67,8 +67,8 @@
       </details>
 
       <%# ── BEAUTÉ DES PIEDS ── %>
-      <details class="accordion-item">
-        <summary class="accordion-header">
+      <details class="accordion-item" data-accordion-target="item">
+        <summary class="accordion-header" data-action="click->accordion#toggle">
           <span class="accordion-title">Beauté des pieds</span>
           <span class="accordion-meta">9 prestations — dès 15 €</span>
           <span class="accordion-chevron"></span>
@@ -87,8 +87,8 @@
       </details>
 
       <%# ── ÉPILATION ── %>
-      <details class="accordion-item">
-        <summary class="accordion-header">
+      <details class="accordion-item" data-accordion-target="item">
+        <summary class="accordion-header" data-action="click->accordion#toggle">
           <span class="accordion-title">Épilation</span>
           <span class="accordion-meta">10 prestations — dès 10 €</span>
           <span class="accordion-chevron"></span>
@@ -116,7 +116,7 @@
   <div class="container">
     <div class="about-content">
       <div class="about-image">
-        <%= image_tag 'salon.jpg', alt: 'Royal Nail salon', class: 'about-pic' %>
+        <%= image_tag 'workind.jpg', alt: 'Royal Nail salon', class: 'about-pic' %>
       </div>
       <div class="about-text">
         <p class="section-eyebrow">Notre histoire</p>

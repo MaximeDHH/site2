@@ -1,31 +1,35 @@
 // ============================================================
-//   ADMIN — Royal Nail Back-office
+//   ADMIN — Editorial Noir
 // ============================================================
 
-$coral:      #e8391d;
-$yellow:     #f0c040;
-$cream:      #faf8f4;
-$white:      #ffffff;
-$dark:       #1a1a1a;
-$text:       #3a3a3a;
-$text-light: #888888;
-$border:     #e8e0d8;
-$sidebar-bg: #1a1a1a;
-$sidebar-w:  220px;
+$void:         #0E0C0A;
+$charcoal:     #1A1714;
+$ink:          #2C2824;
+$cream:        #F5F0E8;
+$cream-dim:    rgba(245, 240, 232, 0.45);
+$cream-ghost:  rgba(245, 240, 232, 0.08);
+$cream-subtle: rgba(245, 240, 232, 0.12);
+$gold:         #C9A96E;
+$gold-dim:     rgba(201, 169, 110, 0.18);
+$border:       rgba(245, 240, 232, 0.10);
+$sidebar-w:    220px;
 
-$green:  #2e7d32;
-$green-bg: #e8f5e9;
-$orange: #e65100;
-$orange-bg: #fff3e0;
-$red:    #c62828;
-$red-bg: #ffebee;
+$ease-expo:    cubic-bezier(0.16, 1, 0.3, 1);
+
+// Status colors — muted to fit dark theme
+$green:     #6BAF7A;
+$green-bg:  rgba(107, 175, 122, 0.12);
+$orange:    #D4956A;
+$orange-bg: rgba(212, 149, 106, 0.12);
+$red:       #C47A7A;
+$red-bg:    rgba(196, 122, 122, 0.12);
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 body.admin-body {
-  font-family: 'Lato', sans-serif;
-  background: #f2ede8;
-  color: $text;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  background: $charcoal;
+  color: $cream;
   display: flex;
   min-height: 100vh;
 }
@@ -34,8 +38,8 @@ body.admin-body {
 
 .admin-sidebar {
   width: $sidebar-w;
-  background: $sidebar-bg;
-  color: #fff;
+  background: #080705;
+  border-right: 1px solid $cream-ghost;
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -48,36 +52,39 @@ body.admin-body {
   align-items: center;
   gap: 12px;
   padding: 24px 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid $cream-ghost;
 }
 
 .admin-logo-badge {
-  width: 38px; height: 38px;
-  background: $coral;
-  border-radius: 8px;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(245, 240, 232, 0.2);
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Rufina', serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #fff;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: $cream;
   flex-shrink: 0;
 }
 
 .admin-logo-name {
   display: block;
-  font-family: 'Rufina', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1rem;
-  font-weight: 700;
-  color: #fff;
+  font-weight: 600;
+  color: $cream;
   line-height: 1.1;
+  letter-spacing: 0.02em;
 }
 
 .admin-logo-sub {
   display: block;
-  font-size: 0.68rem;
-  color: rgba(255,255,255,0.45);
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 0.58rem;
+  color: $cream-dim;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.18em;
+  margin-top: 2px;
 }
 
 .admin-nav {
@@ -85,34 +92,34 @@ body.admin-body {
   padding: 16px 12px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .admin-nav-item {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 12px;
-  border-radius: 8px;
-  color: rgba(255,255,255,0.6);
-  font-size: 0.88rem;
-  font-family: 'Nunito Sans', sans-serif;
-  font-weight: 600;
+  padding: 9px 12px;
+  border-radius: 4px;
+  color: $cream-dim;
+  font-size: 0.82rem;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 400;
   text-decoration: none;
-  transition: background 0.15s, color 0.15s;
+  transition: background 0.18s $ease-expo, color 0.18s;
 
-  i { width: 16px; text-align: center; }
+  i { width: 14px; text-align: center; font-size: 0.8rem; }
 
-  &:hover { background: rgba(255,255,255,0.08); color: #fff; }
-  &.active { background: $coral; color: #fff; }
+  &:hover { background: $cream-ghost; color: $cream; }
+  &.active { background: $gold-dim; color: $gold; }
 }
 
 .admin-sidebar-footer {
   padding: 12px;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid $cream-ghost;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .admin-shop-toggle {
@@ -120,26 +127,26 @@ body.admin-body {
   align-items: center;
   gap: 10px;
   width: 100%;
-  padding: 10px 12px;
-  border-radius: 8px;
-  font-size: 0.88rem;
-  font-family: 'Nunito Sans', sans-serif;
-  font-weight: 600;
+  padding: 9px 12px;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 400;
   cursor: pointer;
   border: none;
   text-align: left;
-  background: rgba(255,255,255,0.07);
-  color: rgba(255,255,255,0.6);
-  transition: background 0.15s, color 0.15s;
+  background: transparent;
+  color: $cream-dim;
+  text-decoration: none;
+  transition: background 0.18s $ease-expo, color 0.18s;
 
-  i { width: 16px; text-align: center; }
-
-  &:hover { background: rgba(255,255,255,0.12); color: #fff; }
+  i { width: 14px; text-align: center; font-size: 0.8rem; }
+  &:hover { background: $cream-ghost; color: $cream; }
 
   &--closed {
-    background: rgba(232, 57, 29, 0.2);
-    color: #ff9a8b;
-    &:hover { background: rgba(232, 57, 29, 0.3); }
+    background: $gold-dim;
+    color: $gold;
+    &:hover { background: rgba(201, 169, 110, 0.25); }
   }
 }
 
@@ -148,28 +155,29 @@ body.admin-body {
 .admin-main {
   margin-left: $sidebar-w;
   flex: 1;
-  padding: 32px;
-  max-width: 1100px;
+  padding: 40px 40px 60px;
+  max-width: calc(1100px + $sidebar-w);
 }
 
 // ── Flash ─────────────────────────────────────────────────────
 
 .admin-flash {
   padding: 12px 18px;
-  border-radius: 8px;
+  border-radius: 2px;
   margin-bottom: 24px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  font-family: 'Cabinet Grotesk', sans-serif;
 
   &--notice {
     background: $green-bg;
     color: $green;
-    border: 1px solid darken($green-bg, 8%);
+    border: 1px solid rgba(107, 175, 122, 0.25);
   }
 
   &--warning {
     background: $orange-bg;
     color: $orange;
-    border: 1px solid darken($orange-bg, 8%);
+    border: 1px solid rgba(212, 149, 106, 0.25);
   }
 }
 
@@ -179,74 +187,82 @@ body.admin-body {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid $cream-ghost;
 
   h1 {
-    font-family: 'Rufina', serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: $dark;
-    line-height: 1.2;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 400;
+    color: $cream;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
   }
 }
 
 .admin-page-sub {
-  color: $text-light;
-  font-size: 0.88rem;
-  margin-top: 2px;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  color: $cream-dim;
+  font-size: 0.82rem;
+  margin-top: 4px;
+  font-weight: 300;
 }
 
 .admin-page-actions {
   display: flex;
   gap: 8px;
+  align-items: center;
 }
 
 .admin-back-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: $text-light;
-  font-size: 0.83rem;
-  margin-bottom: 6px;
+  color: $cream-dim;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 0.78rem;
+  margin-bottom: 8px;
   text-decoration: none;
+  transition: color 0.2s;
 
-  &:hover { color: $coral; }
+  &:hover { color: $gold; }
 }
 
-// ── Stats ─────────────────────────────────────────────────────
+// ── Stats row (bookings index) ────────────────────────────────
 
 .admin-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 12px;
+  margin-bottom: 28px;
 }
 
 .admin-stat {
-  background: $white;
-  border-radius: 12px;
-  padding: 20px 22px;
-  border: 1px solid $border;
+  background: $ink;
+  border-radius: 2px;
+  padding: 18px 20px;
+  border: 1px solid $cream-ghost;
 }
 
 .admin-stat-value {
   display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  font-family: 'Rufina', serif;
-  color: $dark;
+  font-size: 1.8rem;
+  font-weight: 400;
+  font-family: 'Cormorant Garamond', serif;
+  color: $cream;
   line-height: 1;
 }
 
 .admin-stat-label {
   display: block;
-  font-size: 0.75rem;
-  font-family: 'Nunito Sans', sans-serif;
-  font-weight: 700;
+  font-size: 0.62rem;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: $text-light;
-  margin-top: 4px;
+  letter-spacing: 0.14em;
+  color: $cream-dim;
+  margin-top: 6px;
 }
 
 .admin-stat--pending   .admin-stat-value { color: $orange; }
@@ -269,30 +285,33 @@ body.admin-body {
 .admin-filter-group {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
 
   label {
-    font-size: 0.75rem;
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 700;
+    font-size: 0.6rem;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: $text-light;
+    letter-spacing: 0.14em;
+    color: $cream-dim;
   }
 }
 
 .admin-select,
 .admin-input {
   padding: 8px 12px;
-  border: 1px solid $border;
-  border-radius: 8px;
-  font-family: 'Lato', sans-serif;
-  font-size: 0.88rem;
-  color: $text;
-  background: $white;
+  border: 1px solid $cream-ghost;
+  border-radius: 2px;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: $cream;
+  background: $ink;
   outline: none;
+  transition: border-color 0.2s;
 
-  &:focus { border-color: $coral; }
+  option { background: $ink; color: $cream; }
+  &:focus { border-color: $gold; }
 }
 
 // ── Buttons ───────────────────────────────────────────────────
@@ -301,66 +320,71 @@ body.admin-body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 9px 18px;
-  border-radius: 8px;
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 0.83rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  padding: 9px 20px;
+  border-radius: 100px;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   cursor: pointer;
   border: none;
   text-decoration: none;
-  transition: background 0.15s, opacity 0.15s;
+  transition: background 0.22s $ease-expo, color 0.22s, transform 0.18s;
+
+  &:active { transform: scale(0.98); }
 
   &--primary {
-    background: $coral;
-    color: #fff;
-    &:hover { background: darken($coral, 8%); }
+    background: $gold;
+    color: $void;
+    &:hover { background: $cream; }
   }
 
   &--ghost {
     background: transparent;
-    color: $text-light;
+    color: $cream-dim;
     border: 1px solid $border;
-    &:hover { background: $cream; color: $text; }
+    &:hover { border-color: $cream; color: $cream; }
   }
 
   &--confirm {
     background: $green-bg;
     color: $green;
-    border: 1px solid darken($green-bg, 10%);
-    &:hover { background: darken($green-bg, 6%); }
+    border: 1px solid rgba(107, 175, 122, 0.25);
+    border-radius: 100px;
+    &:hover { background: rgba(107, 175, 122, 0.2); }
   }
 
   &--cancel {
     background: $red-bg;
     color: $red;
-    border: 1px solid darken($red-bg, 10%);
-    &:hover { background: darken($red-bg, 6%); }
+    border: 1px solid rgba(196, 122, 122, 0.25);
+    border-radius: 100px;
+    &:hover { background: rgba(196, 122, 122, 0.2); }
   }
 }
 
 // ── Card ──────────────────────────────────────────────────────
 
 .admin-card {
-  background: $white;
-  border-radius: 12px;
-  border: 1px solid $border;
+  background: $ink;
+  border-radius: 2px;
+  border: 1px solid $cream-ghost;
   overflow: hidden;
   margin-bottom: 20px;
 }
 
 .admin-card-title {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: $text-light;
+  letter-spacing: 0.18em;
+  color: $gold;
   padding: 18px 22px 0;
   margin-bottom: 12px;
 
-  i { margin-right: 6px; color: $coral; }
+  i { margin-right: 6px; }
 }
 
 // ── Table ─────────────────────────────────────────────────────
@@ -368,50 +392,53 @@ body.admin-body {
 .admin-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
 
   th {
     text-align: left;
     padding: 12px 16px;
-    background: #faf8f4;
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 700;
+    background: $charcoal;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: $text-light;
-    border-bottom: 1px solid $border;
+    letter-spacing: 0.14em;
+    color: $cream-dim;
+    border-bottom: 1px solid $cream-ghost;
   }
 
   td {
     padding: 13px 16px;
-    border-bottom: 1px solid $border;
+    border-bottom: 1px solid $cream-ghost;
     vertical-align: middle;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-weight: 300;
+    color: $cream;
   }
 
   tbody tr:last-child td { border-bottom: none; }
-  tbody tr:hover { background: #faf9f7; }
+  tbody tr:hover td { background: $cream-ghost; }
 }
 
-.admin-id { color: $text-light; font-size: 0.8rem; }
-.admin-client-name { font-weight: 600; }
-.admin-client-email { font-size: 0.8rem; color: $text-light; }
+.admin-id { color: $cream-dim; font-size: 0.78rem; }
+.admin-client-name { font-weight: 500; color: $cream; }
+.admin-client-email { font-size: 0.78rem; color: $cream-dim; }
 
 // ── Badges ────────────────────────────────────────────────────
 
 .admin-badge {
   display: inline-block;
   padding: 3px 10px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-family: 'Nunito Sans', sans-serif;
-  font-weight: 700;
+  border-radius: 100px;
+  font-size: 0.65rem;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
 
-  &--pending   { background: $orange-bg; color: $orange; }
-  &--confirmed { background: $green-bg;  color: $green; }
-  &--cancelled { background: $red-bg;    color: $red; }
+  &--pending   { background: $orange-bg; color: $orange; border: 1px solid rgba(212, 149, 106, 0.25); }
+  &--confirmed { background: $green-bg;  color: $green;  border: 1px solid rgba(107, 175, 122, 0.25); }
+  &--cancelled { background: $red-bg;    color: $red;    border: 1px solid rgba(196, 122, 122, 0.25); }
 }
 
 // ── Action buttons in table ───────────────────────────────────
@@ -419,48 +446,45 @@ body.admin-body {
 .admin-actions {
   display: flex;
   gap: 6px;
-
   form { display: inline; }
 }
 
 .admin-action-btn {
   width: 30px; height: 30px;
-  border-radius: 6px;
+  border-radius: 50%;
   display: inline-flex; align-items: center; justify-content: center;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   cursor: pointer;
-  border: 1px solid $border;
-  background: $white;
-  color: $text-light;
+  border: 1px solid $cream-ghost;
+  background: transparent;
+  color: $cream-dim;
   text-decoration: none;
-  transition: background 0.12s, color 0.12s;
+  transition: background 0.18s $ease-expo, color 0.18s, border-color 0.18s;
 
-  &:hover { background: $cream; color: $text; }
+  &:hover { background: $cream-ghost; color: $cream; border-color: $cream-subtle; }
 
   &--confirm {
-    border-color: darken($green-bg, 10%);
+    border-color: rgba(107, 175, 122, 0.3);
     color: $green;
-    background: $green-bg;
-    &:hover { background: darken($green-bg, 8%); }
+    &:hover { background: $green-bg; }
   }
 
   &--cancel {
-    border-color: darken($red-bg, 10%);
+    border-color: rgba(196, 122, 122, 0.3);
     color: $red;
-    background: $red-bg;
-    &:hover { background: darken($red-bg, 8%); }
+    &:hover { background: $red-bg; }
   }
 }
 
 // ── Empty state ───────────────────────────────────────────────
 
 .admin-empty {
-  padding: 48px;
+  padding: 56px;
   text-align: center;
-  color: $text-light;
+  color: $cream-dim;
 
-  i { font-size: 2.5rem; margin-bottom: 12px; display: block; opacity: 0.4; }
-  p { font-size: 0.9rem; }
+  i { font-size: 2rem; margin-bottom: 12px; display: block; opacity: 0.3; color: $gold; }
+  p { font-size: 0.88rem; font-family: 'Cabinet Grotesk', sans-serif; font-weight: 300; }
 }
 
 // ── Shop closure page ─────────────────────────────────────────
@@ -477,18 +501,18 @@ body.admin-body {
 }
 
 .shop-preview-label {
-  font-size: 0.72rem;
-  font-family: 'Nunito Sans', sans-serif;
-  font-weight: 700;
+  font-size: 0.6rem;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: $text-light;
+  letter-spacing: 0.14em;
+  color: $cream-dim;
   margin-bottom: 8px;
 }
 
 .shop-closed-banner--preview {
   position: static;
-  border-radius: 8px;
+  border-radius: 2px;
   font-size: 0.85rem;
   opacity: 0.75;
 }
@@ -498,60 +522,63 @@ body.admin-body {
 .stats-kpi-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 12px;
   margin-bottom: 24px;
 }
 
 .stats-kpi {
-  background: $white;
-  border-radius: 12px;
-  border: 1px solid $border;
+  background: $ink;
+  border-radius: 2px;
+  border: 1px solid $cream-ghost;
   padding: 22px 24px;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
 .stats-kpi-label {
-  font-size: 0.72rem;
-  font-family: 'Nunito Sans', sans-serif;
-  font-weight: 700;
+  font-size: 0.6rem;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: $text-light;
+  letter-spacing: 0.14em;
+  color: $cream-dim;
 }
 
 .stats-kpi-value {
-  font-family: 'Rufina', serif;
-  font-size: 1.9rem;
-  font-weight: 700;
-  color: $dark;
-  line-height: 1.1;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: $cream;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
 }
 
 .stats-kpi-sub {
-  font-size: 0.75rem;
-  color: $text-light;
+  font-size: 0.72rem;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 300;
+  color: $cream-dim;
 }
 
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 12px;
   margin-bottom: 20px;
 }
 
 .stats-card { margin-bottom: 0 !important; }
 
 .stats-card-title {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: $text-light;
+  letter-spacing: 0.14em;
+  color: $gold;
   padding: 18px 20px 14px;
-  border-bottom: 1px solid $border;
+  border-bottom: 1px solid $cream-ghost;
 }
 
 .stats-next-booking {
@@ -565,27 +592,30 @@ body.admin-body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: $coral;
-  color: #fff;
-  border-radius: 10px;
+  background: $gold-dim;
+  border: 1px solid rgba(201, 169, 110, 0.3);
+  border-radius: 2px;
   padding: 10px 16px;
   min-width: 56px;
   flex-shrink: 0;
 }
 
 .stats-next-day {
-  font-family: 'Rufina', serif;
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: $gold;
   line-height: 1;
 }
 
 .stats-next-month {
-  font-size: 0.65rem;
-  font-weight: 700;
+  font-size: 0.6rem;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  opacity: 0.85;
+  letter-spacing: 0.1em;
+  color: $gold;
+  opacity: 0.75;
 }
 
 .stats-next-info {
@@ -593,21 +623,23 @@ body.admin-body {
   flex-direction: column;
   gap: 4px;
 
-  strong { font-size: 0.95rem; font-weight: 600; color: $dark; }
-  span   { font-size: 0.82rem; color: $text-light; }
+  strong { font-size: 0.92rem; font-weight: 500; color: $cream; font-family: 'Cabinet Grotesk', sans-serif; }
+  span   { font-size: 0.8rem; color: $cream-dim; font-family: 'Cabinet Grotesk', sans-serif; font-weight: 300; }
 }
 
 .stats-empty {
   padding: 24px 20px;
-  font-size: 0.88rem;
-  color: $text-light;
+  font-size: 0.85rem;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 300;
+  color: $cream-dim;
 }
 
 .stats-top-services {
   padding: 14px 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .stats-service-row {
@@ -617,9 +649,10 @@ body.admin-body {
 }
 
 .stats-service-rank {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: $text-light;
+  font-size: 0.72rem;
+  font-weight: 500;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  color: $cream-dim;
   width: 14px;
   text-align: center;
   flex-shrink: 0;
@@ -629,34 +662,37 @@ body.admin-body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
 }
 
 .stats-service-name {
-  font-size: 0.82rem;
-  color: $text;
+  font-size: 0.8rem;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 300;
+  color: $cream;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .stats-service-bar {
-  height: 4px;
-  background: $border;
+  height: 2px;
+  background: $cream-ghost;
   border-radius: 2px;
   overflow: hidden;
 }
 
 .stats-service-bar-fill {
   height: 100%;
-  background: $coral;
+  background: $gold;
   border-radius: 2px;
 }
 
 .stats-service-count {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: $text-light;
+  font-size: 0.78rem;
+  font-weight: 500;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  color: $cream-dim;
   width: 20px;
   text-align: right;
   flex-shrink: 0;
@@ -667,7 +703,7 @@ body.admin-body {
 .admin-detail-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
+  gap: 16px;
 }
 
 .admin-dl {
@@ -675,26 +711,34 @@ body.admin-body {
   display: grid;
   grid-template-columns: 1fr 1.4fr;
   gap: 6px 16px;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
 
   dt {
-    color: $text-light;
-    font-size: 0.8rem;
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 700;
+    color: $cream-dim;
+    font-size: 0.75rem;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-weight: 500;
     display: flex;
     align-items: center;
   }
 
   dd {
-    color: $text;
-    a { color: $coral; }
+    color: $cream;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-weight: 300;
+    a { color: $gold; &:hover { color: $cream; } }
   }
 }
 
 .admin-mono {
   font-family: monospace;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   word-break: break-all;
-  color: $text-light;
+  color: $cream-dim;
+}
+
+// ── Form fields (shop page) ───────────────────────────────────
+
+input[type="date"].admin-input {
+  color-scheme: dark;
 }

@@ -782,9 +782,9 @@ details[open] .accordion-header {
   color: $cream;
   white-space: nowrap;
 
-  &--13  { background: $ink; border: 1px solid $cream-ghost; }
-  &--12  { background: $charcoal; border: 1px solid $cream-ghost; }
-  &--bus { background: $gold-dim; color: $gold; border: 1px solid rgba(201, 169, 110, 0.3); }
+  &--13  { background: #89D3E8; color: #1A1714; border: none; }
+  &--12  { background: #007852; color: #fff; border: none; }
+  &--bus { background: #5B8DB8; color: #fff; border: none; }
 }
 
 /* ============================================================

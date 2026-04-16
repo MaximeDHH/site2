@@ -427,21 +427,6 @@ details[open] .accordion-inner {
   position: relative;
   overflow: hidden;
 
-  &::after {
-    content: '01';
-    position: absolute;
-    top: 24px;
-    right: 40px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 16rem;
-    font-weight: 600;
-    line-height: 1;
-    color: rgba($cream, 0.025);
-    pointer-events: none;
-    user-select: none;
-    letter-spacing: -0.04em;
-  }
-
   .section-eyebrow { margin-bottom: 0.6rem; }
   .section-heading h2 { color: $cream; }
 }

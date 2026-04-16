@@ -1,37 +1,38 @@
 <footer class="site-footer">
-  <div class="footer-coral"></div>
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="footer-logo-badge">R</div>
+        <div class="footer-logo-badge">TN</div>
         <div>
-          <span class="footer-logo-text">Royal Nail</span>
-          <p>L'art de sublimer vos mains.</p>
+          <span class="footer-logo-text">Truc Anh Nails</span>
+          <p>L'art de sublimer vos mains dans un cadre raffiné, au cœur de Paris.</p>
         </div>
       </div>
       <div class="footer-links">
         <h4>Navigation</h4>
         <ul>
           <li><%= link_to 'Accueil', root_path %></li>
-          <li><a href="#">Onglerie</a></li>
-          <li><a href="#">Massages</a></li>
+          <li><a href="#services">Prestations</a></li>
           <li><%= link_to 'Contact', contact_path %></li>
         </ul>
       </div>
       <div class="footer-contact">
         <h4>Contact</h4>
-        <p><i class="fa-solid fa-phone"></i> </p>
-        <p><i class="fa-solid fa-location-dot"></i> Paris</p>
+        <p><i class="fa-solid fa-phone"></i> <a href="tel:+33627358188">06 27 35 81 88</a></p>
+        <p><i class="fa-solid fa-location-dot"></i> 64 rue Brancion, Paris 15e</p>
         <p><i class="fa-solid fa-clock"></i> Lun – Dim : 10h – 20h</p>
       </div>
       <div class="footer-cta">
         <h4>Réservation</h4>
-        <p>Prenez rendez-vous en ligne simplement.</p>
-        <%= link_to 'Réserver maintenant', new_booking_path, class: 'btn-yellow' %>
+        <p>Prenez rendez-vous en ligne facilement.</p>
+        <%= link_to new_booking_path, class: 'btn-primary' do %>
+          Réserver
+          <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+        <% end %>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Royal Nail — Tous droits réservés</p>
+      <p>© 2025 Truc Anh Nails — Tous droits réservés</p>
       <a href="#">Mentions légales</a>
     </div>
   </div>

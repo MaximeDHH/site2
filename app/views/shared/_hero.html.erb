@@ -1,11 +1,9 @@
-<section class="hero <%= hero_class %>">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">Salon d'onglerie à Lorient</p>
+<section class="hero-contact" style="background-image: url('/assets/hands-rdv.jpg');">
+  <div class="hero-contact__content">
+    <p class="hero-eyebrow-pill">Contact · Paris</p>
     <h1><%= hero_title %></h1>
-    <p class="hero-sub"><%= hero_description %></p>
-    <% if local_assigns[:hero_cta] %>
-      <a href="<%= hero_cta_path %>" class="btn-primary"><%= hero_cta %></a>
+    <% if local_assigns[:hero_description] %>
+      <p class="hero-sub"><%= hero_description %></p>
     <% end %>
   </div>
 </section>

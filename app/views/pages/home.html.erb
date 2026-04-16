@@ -9,27 +9,33 @@
   </div>
 <% end %>
 
-<!-- HERO SPLIT -->
-<section class="hero-split">
-  <div class="hero-left">
-    <p class="hero-tag">Salon d'onglerie · Paris
-    </p>
-    <h1>Des mains sublimes,<br>pour vos plus<br>beaux moments.</h1>
-    <p class="hero-desc">Chez Royal Nail, des professionnelles passionnées subliment vos mains dans un cadre chaleureux et raffiné.</p>
+<!-- HERO NOIR -->
+<section class="hero-noir">
+  <div class="hero-noir__bg"></div>
+  <div class="hero-noir__overlay"></div>
+  <div class="hero-noir__content">
+    <p class="hero-eyebrow-pill">Salon d'onglerie · Paris</p>
+    <h1 class="hero-display">Des mains<br><em>sublimes,</em><br>vos plus beaux<br>moments.</h1>
+    <p class="hero-desc">Chez Truc Anh Nails, des professionnelles passionnées subliment vos mains dans un cadre chaleureux et raffiné.</p>
     <div class="hero-actions">
-      <%= link_to 'Réserver', new_booking_path, class: 'btn-yellow' %>
-      <a href="#services" class="btn-outline-dark">Voir les prestations</a>
+      <%= link_to new_booking_path, class: 'btn-primary' do %>
+        Réserver
+        <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+      <% end %>
+      <a href="#services" class="btn-outline">Voir les prestations</a>
     </div>
-  </div>
-  <div class="hero-right">
-    <%= image_tag 'hands-holding.jpg', alt: 'Royal Nail', class: 'hero-img' %>
+    <div class="hero-info-strip">
+      <span>Paris · Île-de-France</span>
+      <span>Lun – Dim · 10h–20h</span>
+      <span>Sur rendez-vous</span>
+    </div>
   </div>
 </section>
 
 <!-- SERVICES -->
 <section class="services" id="services">
   <div class="container">
-    <div class="section-heading">
+    <div class="section-heading" data-scroll-reveal>
       <p class="section-eyebrow">Ce que nous proposons</p>
       <h2>Nos prestations</h2>
     </div>
@@ -115,15 +121,20 @@
 <section class="about-section">
   <div class="container">
     <div class="about-content">
-      <div class="about-image">
-        <%= image_tag 'workind.jpg', alt: 'Royal Nail salon', class: 'about-pic' %>
+      <div class="about-image" data-scroll-reveal style="--reveal-index: 0">
+        <div class="about-bezel">
+          <%= image_tag 'workind.jpg', alt: 'Truc Anh Nails salon', class: 'about-pic' %>
+        </div>
       </div>
-      <div class="about-text">
+      <div class="about-text" data-scroll-reveal style="--reveal-index: 1">
         <p class="section-eyebrow">Notre histoire</p>
-        <h2>À propos de Royal Nail</h2>
-        <p>Chez Royal Nail, notre passion est de sublimer vos mains et de vous offrir un moment de détente dans un cadre raffiné. Nous vous accueillons dans une ambiance chaleureuse et professionnelle.</p>
+        <h2>À propos de <em>Truc Anh Nails</em></h2>
+        <p>Chez Truc Anh Nails, notre passion est de sublimer vos mains et de vous offrir un moment de détente dans un cadre raffiné. Nous vous accueillons dans une ambiance chaleureuse et professionnelle.</p>
         <p>Notre équipe de professionnelles est là pour vous conseiller et réaliser vos envies, qu'il s'agisse d'une manucure classique ou d'un nail art élaboré.</p>
-        <%= link_to 'Nous contacter', contact_path, class: 'btn-yellow' %>
+        <%= link_to contact_path, class: 'btn-primary' do %>
+          Nous contacter
+          <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+        <% end %>
       </div>
     </div>
   </div>
